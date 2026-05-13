@@ -1,8 +1,9 @@
 import type { SiteConfig } from '../types';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 export function url(path: string): string {
-  return `${base}${path.startsWith('/') ? path.slice(1) : path}`;
+  const p = path.startsWith('/') ? path : `/${path}`;
+  return `${base}${p}`;
 }
 
 export const site: SiteConfig = {

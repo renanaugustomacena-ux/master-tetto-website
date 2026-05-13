@@ -1,21 +1,20 @@
 import type { NavLink } from '../types';
-
-const base = import.meta.env.BASE_URL;
+import { url } from './site';
 
 export const mainNav: NavLink[] = [
-  { label: 'Home', href: `${base}` },
-  { label: 'Servizi', href: `${base}servizi/` },
-  { label: 'Lavori', href: `${base}lavori/` },
-  { label: 'Chi Siamo', href: `${base}chi-siamo/` },
-  { label: 'Preventivo Gratuito', href: `${base}contatti/`, isCta: true },
+  { label: 'Home', href: url('/') },
+  { label: 'Servizi', href: url('/servizi/') },
+  { label: 'Lavori', href: url('/lavori/') },
+  { label: 'Chi Siamo', href: url('/chi-siamo/') },
+  { label: 'Preventivo Gratuito', href: url('/contatti/'), isCta: true },
 ];
 
 export const footerNav: NavLink[] = [
-  { label: 'Home', href: `${base}` },
-  { label: 'Servizi', href: `${base}servizi/` },
-  { label: 'Lavori', href: `${base}lavori/` },
-  { label: 'Chi Siamo', href: `${base}chi-siamo/` },
-  { label: 'Contatti', href: `${base}contatti/` },
-  { label: 'Privacy Policy', href: `${base}privacy/` },
-  { label: 'Cookie Policy', href: `${base}cookie/` },
+  { label: 'Home', href: url('/') },
+  { label: 'Servizi', href: url('/servizi/') },
+  { label: 'Lavori', href: url('/lavori/') },
+  { label: 'Chi Siamo', href: url('/chi-siamo/') },
+  { label: 'Contatti', href: url('/contatti/') },
+  { label: 'Privacy Policy', href: url('/privacy/') },
+  { label: 'Cookie Policy', href: url('/cookie/') },
 ];
