@@ -1,0 +1,61 @@
+---
+import SEOHead from '@components/global/SEOHead.astro';
+import SchemaOrg from '@components/global/SchemaOrg.astro';
+import '@styles/global.css';
+import '@styles/utilities.css';
+import '@styles/animations.css';
+import '@styles/components.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown>;
+}
+
+const { title, description, canonical, ogImage, noindex, schema } = Astro.props;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1a1410" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Preload critical font -->
+    <link
+      rel="preload"
+      href="/fonts/source-sans-3-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <SEOHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      noindex={noindex}
+    />
+
+    {schema && <SchemaOrg schema={schema} />}
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
+    <slot />
+    <script>
+      import { initScrollAnimations } from '@scripts/scroll-animations';
+      import { initMagneticButtons } from '@scripts/magnetic-btn';
+
+      initScrollAnimations();
+      initMagneticButtons();
+    </script>
+  </body>
+</html>

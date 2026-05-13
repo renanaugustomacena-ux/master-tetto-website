@@ -1,0 +1,267 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import SectionHeader from '@components/ui/SectionHeader.astro';
+import WebGLBackground from '@components/webgl/WebGLBackground.astro';
+import { site, url } from '@data/site';
+import { services } from '@data/services';
+import { buildLocalBusinessSchema } from '@data/schema';
+
+const schema = buildLocalBusinessSchema();
+---
+
+<PageLayout
+  title={`${site.name} — Manutenzione Acrobatica del Tetto a Verona`}
+  description={site.description}
+  schema={schema}
+>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <WebGLBackground />
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__content container">
+      <span class="eyebrow hero__eyebrow">Manutenzione Acrobatica del Tetto</span>
+      <h1 id="hero-heading" class="text-hero hero__title">
+        Il Tuo Tetto<br />in Mani Esperte
+      </h1>
+      <p class="hero__sub text-lead">
+        Senza ponteggi. Senza compromessi.<br />
+        Qualità impeccabile su ogni copertura.
+      </p>
+      <div class="hero__cta">
+        <a href={url('/contatti/')} class="btn btn--primary btn--lg" data-magnetic="0.3">Richiedi Preventivo</a>
+        <a href="#servizi" class="btn btn--outline btn--lg" data-magnetic="0.2">Scopri i Servizi</a>
+      </div>
+      <div class="hero__scroll animate-scroll-hint" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M19 12l-7 7-7-7" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIZI PREVIEW -->
+  <section class="section" id="servizi" aria-labelledby="servizi-heading">
+    <div class="container">
+      <SectionHeader
+        eyebrow="COSA FACCIAMO"
+        title="I Nostri Servizi"
+        description="Dalla manutenzione ordinaria al rifacimento completo, operiamo senza ponteggi con tecniche acrobatiche certificate."
+      />
+      <div class="services-grid">
+        {
+          services.map((service, i) => (
+            <article class="service-card card" data-animate="fade-up" style={`--delay: ${i * 0.08}s`}>
+              <span class="service-card__num">{service.num}</span>
+              <h3 class="service-card__title">{service.title}</h3>
+              <p class="service-card__desc">{service.description}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="section__cta" data-animate="fade-up">
+        <a href={url('/servizi/')} class="btn btn--outline">Vedi tutti i servizi &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERCHÉ NOI -->
+  <section class="section why-us" aria-labelledby="why-heading">
+    <div class="container">
+      <SectionHeader
+        eyebrow="PERCHÉ MASTERTETTO"
+        title="Perché Sceglierci"
+      />
+      <div class="grid-4 why-us__grid">
+        <div class="why-card" data-animate="fade-up">
+          <span class="why-card__icon">&#9878;</span>
+          <h3 class="why-card__title">Senza Ponteggi</h3>
+          <p class="why-card__desc">Costi ridotti, intervento rapido, nessun disturbo al vicinato.</p>
+        </div>
+        <div class="why-card" data-animate="fade-up">
+          <span class="why-card__icon">&#9888;</span>
+          <h3 class="why-card__title">Sicurezza Certificata</h3>
+          <p class="why-card__desc">Conformi D.Lgs. 81/2008 e UNI EN 795. DPI professionali.</p>
+        </div>
+        <div class="why-card" data-animate="fade-up">
+          <span class="why-card__icon">&#10003;</span>
+          <h3 class="why-card__title">Lavoro Impeccabile</h3>
+          <p class="why-card__desc">Restauro preciso coppo per coppo. Qualità artigianale italiana.</p>
+        </div>
+        <div class="why-card" data-animate="fade-up">
+          <span class="why-card__icon">&#9993;</span>
+          <h3 class="why-card__title">Preventivo Gratuito</h3>
+          <p class="why-card__desc">Sopralluogo senza impegno. Preventivo dettagliato e trasparente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONTATTI -->
+  <section class="section cta-section" aria-labelledby="cta-heading">
+    <div class="container" style="text-align: center;">
+      <SectionHeader
+        eyebrow="CONTATTACI"
+        title="Richiedi un Preventivo Gratuito"
+        description="Contattaci via WhatsApp, telefono o email. Rispondiamo entro 24 ore."
+      />
+      <div class="cta-section__buttons" data-animate="fade-up">
+        <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+          Scrivici su WhatsApp
+        </a>
+        <a href={`tel:${site.phone}`} class="btn btn--outline btn--lg">
+          Chiama {site.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      var(--color-terracotta-700) 0%,
+      var(--bg-primary) 40%,
+      var(--bg-primary) 100%
+    );
+    opacity: 0.4;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-24);
+    padding-top: 72px;
+  }
+
+  .hero__sub {
+    max-width: 550px;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: var(--space-16);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--space-16);
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: var(--space-32);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-muted);
+  }
+
+  /* SERVICES GRID */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-24);
+  }
+
+  .service-card {
+    padding: var(--space-32);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  .service-card__num {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--accent-primary-dim);
+    color: rgba(198, 40, 40, 0.15);
+    line-height: 1;
+  }
+
+  .service-card__title {
+    font-size: var(--text-h4);
+  }
+
+  .service-card__desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-normal);
+  }
+
+  .section__cta {
+    text-align: center;
+    margin-top: var(--space-48);
+  }
+
+  /* WHY US */
+  .why-us {
+    background: var(--bg-secondary);
+  }
+
+  .why-card {
+    text-align: center;
+    padding: var(--space-32);
+  }
+
+  .why-card__icon {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-16);
+    color: var(--accent-primary);
+  }
+
+  .why-card__title {
+    font-size: var(--text-h4);
+    margin-bottom: var(--space-8);
+  }
+
+  .why-card__desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--bg-panel);
+  }
+
+  .cta-section__buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-16);
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__cta {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

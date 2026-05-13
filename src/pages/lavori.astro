@@ -1,0 +1,294 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import SectionHeader from '@components/ui/SectionHeader.astro';
+import { site, url } from '@data/site';
+import { projects, categoryLabels } from '@data/projects';
+import { buildWebPageSchema } from '@data/schema';
+
+const schema = buildWebPageSchema(
+  'Lavori Completati — Portfolio',
+  'Galleria dei nostri lavori: prima e dopo, rifacimenti completi, installazione lucernari e linee vita.',
+);
+
+const usedCategories = [...new Set(projects.map((p) => p.category))];
+---
+
+<PageLayout
+  title={`Lavori Completati — Portfolio | ${site.name}`}
+  description="Galleria dei nostri lavori: prima e dopo, rifacimenti completi, installazione lucernari e linee vita. Qualità certificata."
+  schema={schema}
+>
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-labelledby="lavori-heading">
+    <div class="container">
+      <span class="eyebrow" data-animate="fade-up">PORTFOLIO</span>
+      <h1 id="lavori-heading" class="text-hero page-hero__title" data-animate="fade-up">
+        I Nostri Lavori
+      </h1>
+      <p class="text-lead page-hero__sub" data-animate="fade-up">
+        Ogni progetto racconta una storia di qualità e precisione artigianale.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" aria-labelledby="gallery-heading">
+    <div class="container">
+      <h2 id="gallery-heading" class="sr-only">Galleria lavori</h2>
+
+      <!-- FILTERS -->
+      <div class="gallery-filters" data-animate="fade-up" role="tablist" aria-label="Filtra per categoria">
+        <button class="filter-btn filter-btn--active" data-filter="all" role="tab" aria-selected="true">
+          Tutti
+        </button>
+        {
+          usedCategories.map((cat) => (
+            <button class="filter-btn" data-filter={cat} role="tab" aria-selected="false">
+              {categoryLabels[cat] || cat}
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- GRID -->
+      <div class="gallery-grid" id="gallery-grid">
+        {
+          projects.map((project, i) => (
+            <article
+              class="gallery-card"
+              data-category={project.category}
+              data-animate="fade-up"
+              style={`--delay: ${(i % 4) * 0.08}s`}
+            >
+              <div class="gallery-card__media">
+                <div class="gallery-card__placeholder">
+                  <span>{project.title.charAt(0)}</span>
+                </div>
+                {project.beforeAfter && (
+                  <span class="gallery-card__badge">Prima / Dopo</span>
+                )}
+              </div>
+              <div class="gallery-card__info">
+                <h3 class="gallery-card__title">{project.title}</h3>
+                <p class="gallery-card__desc">{project.description}</p>
+                <div class="gallery-card__meta">
+                  <span class="badge">{categoryLabels[project.category]}</span>
+                  <span class="gallery-card__location">📍 {project.location}</span>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="gallery-note" data-animate="fade-up">
+        Galleria in aggiornamento — nuovi progetti aggiunti regolarmente.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section" aria-labelledby="cta-lavori">
+    <div class="container" style="text-align: center;">
+      <SectionHeader
+        eyebrow="IL TUO PROGETTO"
+        title="Vuoi Risultati Come Questi?"
+        description="Contattaci per un sopralluogo gratuito e scopri come possiamo trasformare il tuo tetto."
+      />
+      <div class="cta-buttons" data-animate="fade-up">
+        <a href={url('/contatti/')} class="btn btn--primary btn--lg">Richiedi Preventivo</a>
+        <a href={site.whatsapp} class="btn btn--outline btn--lg" target="_blank" rel="noopener">
+          Scrivici su WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.gallery-card');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      filterBtns.forEach((b) => {
+        b.classList.remove('filter-btn--active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('filter-btn--active');
+      btn.setAttribute('aria-selected', 'true');
+
+      cards.forEach((card) => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .page-hero {
+    padding-top: calc(80px + var(--space-64));
+    padding-bottom: var(--space-64);
+    text-align: center;
+  }
+
+  .page-hero__title {
+    margin-bottom: var(--space-16);
+  }
+
+  .page-hero__sub {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  /* FILTERS */
+  .gallery-filters {
+    display: flex;
+    gap: var(--space-8);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: var(--space-48);
+  }
+
+  .filter-btn {
+    padding: var(--space-8) var(--space-16);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all var(--duration-normal);
+  }
+
+  .filter-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+
+  .filter-btn--active {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+  }
+
+  /* GRID */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-24);
+  }
+
+  .gallery-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--duration-normal) var(--ease-out-expo),
+                box-shadow var(--duration-normal),
+                border-color var(--duration-normal);
+  }
+
+  .gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-accent);
+  }
+
+  .gallery-card__media {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery-card__placeholder {
+    aspect-ratio: 4 / 3;
+    background: var(--bg-panel);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-card__placeholder span {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: var(--weight-bold);
+    color: rgba(198, 40, 40, 0.1);
+  }
+
+  .gallery-card__badge {
+    position: absolute;
+    top: var(--space-12);
+    left: var(--space-12);
+    padding: var(--space-4) var(--space-12);
+    background: var(--accent-primary);
+    color: white;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    border-radius: var(--radius-full);
+  }
+
+  .gallery-card__info {
+    padding: var(--space-24);
+  }
+
+  .gallery-card__title {
+    font-size: var(--text-h4);
+    margin-bottom: var(--space-8);
+  }
+
+  .gallery-card__desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-16);
+    line-height: var(--leading-normal);
+  }
+
+  .gallery-card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    flex-wrap: wrap;
+  }
+
+  .gallery-card__location {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .gallery-note {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin-top: var(--space-48);
+    font-style: italic;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--bg-panel);
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-16);
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

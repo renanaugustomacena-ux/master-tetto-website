@@ -1,0 +1,44 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# astro
+.astro/
+
+# testing
+coverage/
+test-results/
+playwright-report/
+blob-report/
+
+# raw client photos (large, not for git)
+_raw-photos/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# vercel
+.vercel/
+
+# claude code
+.claude/

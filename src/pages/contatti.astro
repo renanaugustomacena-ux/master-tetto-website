@@ -1,0 +1,492 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import SectionHeader from '@components/ui/SectionHeader.astro';
+import { site, url } from '@data/site';
+import { buildWebPageSchema } from '@data/schema';
+
+const schema = buildWebPageSchema(
+  'Contatti — Preventivo Gratuito',
+  'Richiedi un preventivo gratuito per la manutenzione del tuo tetto. Contattaci via WhatsApp, telefono o email.',
+);
+
+const serviceOptions = [
+  'Ripasso del tetto',
+  'Rifacimento copertura',
+  'Sostituzione lucernari',
+  'Pulizia grondaia',
+  'Pulizia pannelli fotovoltaici',
+  'Isolamento sottotetto',
+  'Linea vita / anticaduta',
+  'Altro',
+];
+---
+
+<PageLayout
+  title={`Contatti — Preventivo Gratuito | ${site.name}`}
+  description="Richiedi un preventivo gratuito per la manutenzione del tuo tetto. Contattaci via WhatsApp, telefono o email."
+  schema={schema}
+>
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-labelledby="contatti-heading">
+    <div class="container">
+      <span class="eyebrow" data-animate="fade-up">CONTATTACI</span>
+      <h1 id="contatti-heading" class="text-hero page-hero__title" data-animate="fade-up">
+        Richiedi un Preventivo
+      </h1>
+      <p class="text-lead page-hero__sub" data-animate="fade-up">
+        Sopralluogo gratuito e preventivo senza impegno. Rispondiamo entro 24 ore.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT CONTENT -->
+  <section class="section" aria-labelledby="form-heading">
+    <div class="container">
+      <div class="contact-layout">
+        <!-- FORM -->
+        <div class="contact-form-wrapper" data-animate="fade-up">
+          <h2 id="form-heading" class="sr-only">Modulo di contatto</h2>
+          <form
+            id="contact-form"
+            class="contact-form"
+            action="https://formspree.io/f/PLACEHOLDER"
+            method="POST"
+            novalidate
+          >
+            <!-- Honeypot -->
+            <div class="form-hp" aria-hidden="true">
+              <label for="hp-field">Non compilare</label>
+              <input type="text" id="hp-field" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="nome">Nome e Cognome *</label>
+              <input
+                class="input"
+                type="text"
+                id="nome"
+                name="nome"
+                required
+                autocomplete="name"
+                placeholder="Mario Rossi"
+              />
+              <span class="form-error" id="nome-error"></span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="telefono">Telefono *</label>
+                <input
+                  class="input"
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  required
+                  autocomplete="tel"
+                  placeholder="+39 392 000 0000"
+                />
+                <span class="form-error" id="telefono-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">Email *</label>
+                <input
+                  class="input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="email@esempio.it"
+                />
+                <span class="form-error" id="email-error"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="servizio">Tipo di intervento</label>
+              <select class="input" id="servizio" name="servizio">
+                <option value="">Seleziona un servizio...</option>
+                {serviceOptions.map((s) => (
+                  <option value={s}>{s}</option>
+                ))}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="indirizzo">Indirizzo dell'immobile</label>
+              <input
+                class="input"
+                type="text"
+                id="indirizzo"
+                name="indirizzo"
+                autocomplete="street-address"
+                placeholder="Via Roma, 1 — Verona"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="messaggio">Descrizione dei lavori *</label>
+              <textarea
+                class="input"
+                id="messaggio"
+                name="messaggio"
+                rows="5"
+                required
+                minlength="10"
+                placeholder="Descrivete brevemente il lavoro di cui avete bisogno..."
+              ></textarea>
+              <span class="form-error" id="messaggio-error"></span>
+            </div>
+
+            <div class="form-group form-check">
+              <input type="checkbox" id="privacy" name="privacy" required />
+              <label class="form-check__label" for="privacy">
+                Ho letto e accetto l'<a href={url('/privacy/')}>Informativa sulla Privacy</a> ai sensi del GDPR. *
+              </label>
+              <span class="form-error" id="privacy-error"></span>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg contact-form__submit">
+              Invia Richiesta
+            </button>
+
+            <div class="form-feedback" id="form-feedback" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="contact-sidebar" data-animate="fade-up">
+          <div class="contact-info-card">
+            <h3>Contatto Diretto</h3>
+            <p class="contact-info__hint">Preferisci parlare con noi? Siamo a disposizione.</p>
+
+            <div class="contact-info__channels">
+              <a href={site.whatsapp} class="contact-channel contact-channel--wa" target="_blank" rel="noopener">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                <div>
+                  <strong>WhatsApp</strong>
+                  <span>Scrivici ora</span>
+                </div>
+              </a>
+
+              <a href={`tel:${site.phone}`} class="contact-channel">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                </svg>
+                <div>
+                  <strong>Telefono</strong>
+                  <span>{site.phoneDisplay}</span>
+                </div>
+              </a>
+
+              <a href={`mailto:${site.email}`} class="contact-channel">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/>
+                </svg>
+                <div>
+                  <strong>Email</strong>
+                  <span>{site.email}</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <h3>Dove Siamo</h3>
+            <address class="contact-address">
+              <strong>{site.legalName}</strong><br />
+              {site.address.street}<br />
+              {site.address.postalCode} {site.address.city} ({site.address.province})
+            </address>
+          </div>
+
+          <!-- Google Maps -->
+          <div class="contact-map" data-animate="fade-up">
+            <iframe
+              title="Sede MasterTetto SNC — Verona"
+              src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800!2d${site.geo.longitude}!3d${site.geo.latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zVmVyb25h!5e0!3m2!1sit!2sit!4v1`}
+              width="100%"
+              height="250"
+              style="border:0; border-radius: var(--radius-lg);"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const feedback = document.getElementById('form-feedback');
+  if (!form || !feedback) throw new Error('Form elements missing');
+
+  const validators: Record<string, (el: HTMLInputElement | HTMLTextAreaElement) => string> = {
+    nome: (el) => el.value.trim().length < 2 ? 'Inserisci il tuo nome completo.' : '',
+    telefono: (el) => !/^\+?[\d\s\-()]{7,}$/.test(el.value.trim()) ? 'Inserisci un numero di telefono valido.' : '',
+    email: (el) => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()) ? 'Inserisci un indirizzo email valido.' : '',
+    messaggio: (el) => el.value.trim().length < 10 ? 'Descrivi brevemente i lavori (minimo 10 caratteri).' : '',
+    privacy: (el) => !(el as HTMLInputElement).checked ? 'Devi accettare l\'informativa sulla privacy.' : '',
+  };
+
+  function validateField(name: string): boolean {
+    const el = form!.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | null;
+    if (!el) return true;
+    const errEl = document.getElementById(`${name}-error`);
+    const msg = validators[name]?.(el) ?? '';
+    if (errEl) errEl.textContent = msg;
+    el.classList.toggle('input--error', !!msg);
+    return !msg;
+  }
+
+  Object.keys(validators).forEach((name) => {
+    const el = form!.elements.namedItem(name) as HTMLElement | null;
+    el?.addEventListener('blur', () => validateField(name));
+    el?.addEventListener('change', () => validateField(name));
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const hp = (form.elements.namedItem('_gotcha') as HTMLInputElement)?.value;
+    if (hp) return;
+
+    const allValid = Object.keys(validators).every(validateField);
+    if (!allValid) {
+      feedback.textContent = 'Correggi gli errori evidenziati prima di inviare.';
+      feedback.className = 'form-feedback form-feedback--error';
+      return;
+    }
+
+    const btn = form.querySelector('.contact-form__submit') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Invio in corso...';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        feedback.textContent = 'Richiesta inviata con successo! Ti ricontatteremo entro 24 ore.';
+        feedback.className = 'form-feedback form-feedback--success';
+        form.reset();
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      feedback.textContent = 'Errore nell\'invio. Riprova o contattaci via WhatsApp.';
+      feedback.className = 'form-feedback form-feedback--error';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Invia Richiesta';
+    }
+  });
+</script>
+
+<style>
+  .page-hero {
+    padding-top: calc(80px + var(--space-64));
+    padding-bottom: var(--space-64);
+    text-align: center;
+  }
+
+  .page-hero__title {
+    margin-bottom: var(--space-16);
+  }
+
+  .page-hero__sub {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  /* LAYOUT */
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-64);
+    align-items: start;
+  }
+
+  /* FORM */
+  .form-hp {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-24);
+  }
+
+  .contact-form select.input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23B8A898' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  .contact-form textarea.input {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-12);
+    flex-wrap: wrap;
+  }
+
+  .form-check input[type="checkbox"] {
+    margin-top: 4px;
+    accent-color: var(--accent-primary);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .form-check__label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    flex: 1;
+  }
+
+  .form-check__label a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+  }
+
+  .form-check .form-error {
+    width: 100%;
+  }
+
+  .contact-form__submit {
+    align-self: flex-start;
+  }
+
+  .form-feedback {
+    font-size: var(--text-sm);
+    padding: var(--space-12) var(--space-16);
+    border-radius: var(--radius-md);
+    display: none;
+  }
+
+  .form-feedback--success {
+    display: block;
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--color-success);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+  }
+
+  .form-feedback--error {
+    display: block;
+    background: rgba(244, 67, 54, 0.1);
+    color: var(--color-error);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+  }
+
+  /* SIDEBAR */
+  .contact-info-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    margin-bottom: var(--space-24);
+  }
+
+  .contact-info-card h3 {
+    font-size: var(--text-h4);
+    margin-bottom: var(--space-16);
+  }
+
+  .contact-info__hint {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--space-24);
+  }
+
+  .contact-info__channels {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  .contact-channel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+    padding: var(--space-16);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: border-color var(--duration-normal), background var(--duration-normal);
+  }
+
+  .contact-channel:hover {
+    border-color: var(--accent-primary);
+    background: var(--bg-card);
+  }
+
+  .contact-channel--wa {
+    border-color: #25d366;
+  }
+
+  .contact-channel--wa:hover {
+    background: rgba(37, 211, 102, 0.08);
+  }
+
+  .contact-channel strong {
+    display: block;
+    font-size: var(--text-sm);
+  }
+
+  .contact-channel span {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .contact-address {
+    font-style: normal;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .contact-map {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

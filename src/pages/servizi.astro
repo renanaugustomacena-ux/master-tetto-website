@@ -1,0 +1,231 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import SectionHeader from '@components/ui/SectionHeader.astro';
+import { site, url } from '@data/site';
+import { services } from '@data/services';
+import { buildWebPageSchema } from '@data/schema';
+
+const schema = buildWebPageSchema(
+  'Servizi — Manutenzione Tetto Acrobatica',
+  'Tutti i nostri servizi di manutenzione tetto a Verona: ripasso, rifacimento, linee vita, pulizia grondaie, pannelli solari, isolamento sottotetto.',
+);
+---
+
+<PageLayout
+  title={`Servizi — Manutenzione Tetto Acrobatica | ${site.name}`}
+  description="Ripasso, rifacimento, linee vita, pulizia grondaie, pannelli solari, isolamento sottotetto. Tutti i nostri servizi di manutenzione tetto a Verona."
+  schema={schema}
+>
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-labelledby="servizi-heading">
+    <div class="container">
+      <span class="eyebrow" data-animate="fade-up">I NOSTRI SERVIZI</span>
+      <h1 id="servizi-heading" class="text-hero page-hero__title" data-animate="fade-up">
+        Cosa Facciamo
+      </h1>
+      <p class="text-lead page-hero__sub" data-animate="fade-up">
+        Dalla manutenzione ordinaria al rifacimento completo, operiamo senza ponteggi
+        con tecniche acrobatiche certificate.
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICES LIST -->
+  {
+    services.map((service, i) => (
+      <section
+        class:list={['section service-detail', { 'service-detail--alt': i % 2 === 1 }]}
+        id={service.slug}
+        aria-labelledby={`service-${service.slug}`}
+      >
+        <div class="container">
+          <div class="service-detail__layout">
+            <div class="service-detail__content">
+              <span class="service-detail__num" data-animate="fade-up">{service.num}</span>
+              <h2 id={`service-${service.slug}`} class="service-detail__title" data-animate="fade-up">
+                {service.title}
+              </h2>
+              <p class="service-detail__desc" data-animate="fade-up">
+                {service.longDescription}
+              </p>
+              <ul class="service-detail__benefits" data-animate="fade-up">
+                {service.benefits.map((b) => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+              <div data-animate="fade-up">
+                <a
+                  href={`${site.whatsapp}&text=${encodeURIComponent(`Buongiorno, vorrei informazioni sul servizio: ${service.title}`)}`}
+                  class="btn btn--primary"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Richiedi preventivo
+                </a>
+              </div>
+            </div>
+            <div class="service-detail__visual" data-animate="scale-in">
+              <div class="service-detail__placeholder">
+                <span class="service-detail__placeholder-num">{service.num}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- CTA -->
+  <section class="section cta-section" aria-labelledby="cta-servizi">
+    <div class="container" style="text-align: center;">
+      <SectionHeader
+        eyebrow="CONTATTACI"
+        title="Hai Bisogno di un Intervento?"
+        description="Contattaci per un sopralluogo gratuito e un preventivo senza impegno."
+      />
+      <div class="cta-section__buttons" data-animate="fade-up">
+        <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+          Scrivici su WhatsApp
+        </a>
+        <a href={url('/contatti/')} class="btn btn--outline btn--lg">
+          Richiedi Preventivo
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero {
+    padding-top: calc(80px + var(--space-64));
+    padding-bottom: var(--space-64);
+    text-align: center;
+  }
+
+  .page-hero__title {
+    margin-bottom: var(--space-16);
+  }
+
+  .page-hero__sub {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  /* SERVICE DETAIL */
+  .service-detail--alt {
+    background: var(--bg-secondary);
+  }
+
+  .service-detail__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-64);
+    align-items: center;
+  }
+
+  .service-detail--alt .service-detail__layout {
+    direction: rtl;
+  }
+
+  .service-detail--alt .service-detail__layout > * {
+    direction: ltr;
+  }
+
+  .service-detail__num {
+    font-family: var(--font-display);
+    font-size: var(--text-hero);
+    font-weight: var(--weight-bold);
+    color: rgba(198, 40, 40, 0.12);
+    line-height: 1;
+    display: block;
+    margin-bottom: var(--space-8);
+  }
+
+  .service-detail__title {
+    font-size: var(--text-h2);
+    margin-bottom: var(--space-24);
+  }
+
+  .service-detail__desc {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-32);
+  }
+
+  .service-detail__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-32);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  .service-detail__benefits li {
+    padding-left: var(--space-24);
+    position: relative;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .service-detail__benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-weight: var(--weight-bold);
+  }
+
+  .service-detail__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-detail__placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-detail__placeholder-num {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 8vw, 8rem);
+    font-weight: var(--weight-bold);
+    color: rgba(198, 40, 40, 0.08);
+    line-height: 1;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--bg-panel);
+  }
+
+  .cta-section__buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-16);
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .service-detail__layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-32);
+    }
+
+    .service-detail--alt .service-detail__layout {
+      direction: ltr;
+    }
+
+    .service-detail__visual {
+      order: -1;
+    }
+  }
+</style>

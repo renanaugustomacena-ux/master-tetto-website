@@ -1,0 +1,208 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import { site } from '@data/site';
+---
+
+<PageLayout
+  title={`Cookie Policy | ${site.name}`}
+  description="Informativa sull'uso dei cookie ai sensi delle Linee Guida del Garante Privacy del 10 giugno 2021."
+  noindex={true}
+>
+  <section class="page-hero page-hero--sm">
+    <div class="container">
+      <h1 class="page-hero__title">Cookie Policy</h1>
+      <p class="page-hero__sub text-lead">
+        Informativa ai sensi delle Linee Guida del Garante Privacy del 10/06/2021
+      </p>
+    </div>
+  </section>
+
+  <section class="section legal-content">
+    <div class="container container--narrow">
+
+      <h2>1. Cosa Sono i Cookie</h2>
+      <p>
+        I cookie sono piccoli file di testo che i siti visitati dall'utente inviano al
+        suo dispositivo (computer, tablet, smartphone), dove vengono memorizzati per
+        essere poi ritrasmessi agli stessi siti alla visita successiva.
+      </p>
+
+      <h2>2. Cookie Utilizzati da Questo Sito</h2>
+
+      <h3>Cookie Tecnici (Essenziali)</h3>
+      <p>
+        Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento
+        e alla fornitura del servizio. Non richiedono il consenso dell'utente.
+      </p>
+      <table class="cookie-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Finalità</th>
+            <th>Durata</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>cookie_consent</code></td>
+            <td>Memorizza la preferenza sui cookie dell'utente</td>
+            <td>12 mesi</td>
+            <td>Tecnico</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Cookie Analitici</h3>
+      <p>
+        Questo sito potrebbe utilizzare <strong>Plausible Analytics</strong>, un servizio
+        di analisi web che non utilizza cookie e non raccoglie dati personali.
+        Plausible è conforme al GDPR senza necessità di consenso in quanto non
+        traccia gli utenti tra siti diversi e non utilizza identificatori personali.
+      </p>
+
+      <h3>Cookie di Terze Parti</h3>
+      <p>
+        Questo sito non utilizza cookie di profilazione propri. Tuttavia, potrebbero
+        essere presenti cookie di terze parti provenienti da:
+      </p>
+      <ul>
+        <li>
+          <strong>Google Maps</strong> — per la visualizzazione della mappa nella pagina contatti.
+          Google potrebbe impostare cookie propri. Per maggiori informazioni:
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy di Google</a>.
+        </li>
+      </ul>
+
+      <h2>3. Come Gestire i Cookie</h2>
+      <p>
+        L'utente può gestire le proprie preferenze sui cookie attraverso il banner
+        di consenso visualizzato alla prima visita del sito, oppure cliccando su
+        "Gestisci Cookie" nel footer di ogni pagina.
+      </p>
+      <p>
+        È inoltre possibile gestire i cookie direttamente dal proprio browser.
+        Di seguito le istruzioni per i principali browser:
+      </p>
+      <ul>
+        <li><strong>Chrome</strong>: Impostazioni → Privacy e sicurezza → Cookie e altri dati dei siti</li>
+        <li><strong>Firefox</strong>: Impostazioni → Privacy e sicurezza → Cookie e dati dei siti web</li>
+        <li><strong>Safari</strong>: Preferenze → Privacy → Gestisci dati siti web</li>
+        <li><strong>Edge</strong>: Impostazioni → Cookie e autorizzazioni sito → Cookie e dati archiviati</li>
+      </ul>
+
+      <h2>4. Disabilitazione dei Cookie</h2>
+      <p>
+        La disabilitazione dei cookie tecnici potrebbe compromettere alcune funzionalità
+        del sito. I cookie analitici (se presenti) possono essere rifiutati senza alcun
+        impatto sull'esperienza di navigazione.
+      </p>
+
+      <h2>5. Titolare del Trattamento</h2>
+      <p>
+        <strong>{site.legalName}</strong><br />
+        {site.address.street}, {site.address.postalCode} {site.address.city} ({site.address.province})<br />
+        P.IVA {site.piva}<br />
+        Email: <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2>6. Riferimenti Normativi</h2>
+      <ul>
+        <li>Regolamento UE 2016/679 (GDPR)</li>
+        <li>D.Lgs. 196/2003 (Codice Privacy), come modificato dal D.Lgs. 101/2018</li>
+        <li>Linee Guida del Garante Privacy sull'utilizzo dei cookie — 10 giugno 2021</li>
+        <li>Provvedimento del Garante n. 229 dell'8 maggio 2014</li>
+      </ul>
+
+      <h2>7. Aggiornamento</h2>
+      <p>
+        La presente Cookie Policy può essere soggetta ad aggiornamenti.
+        Ultimo aggiornamento: <strong>Maggio 2026</strong>.
+      </p>
+
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero--sm {
+    padding-top: calc(80px + var(--space-48));
+    padding-bottom: var(--space-48);
+    text-align: center;
+  }
+
+  .page-hero__title {
+    margin-bottom: var(--space-12);
+  }
+
+  .container--narrow {
+    max-width: 800px;
+  }
+
+  .legal-content h2 {
+    font-size: var(--text-h3);
+    margin-top: var(--space-48);
+    margin-bottom: var(--space-16);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .legal-content h3 {
+    font-size: var(--text-h4);
+    margin-top: var(--space-32);
+    margin-bottom: var(--space-12);
+  }
+
+  .legal-content p {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-16);
+  }
+
+  .legal-content ul {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-16);
+    padding-left: var(--space-24);
+  }
+
+  .legal-content li {
+    margin-bottom: var(--space-8);
+  }
+
+  .legal-content a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+  }
+
+  .cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-24) 0;
+    font-size: var(--text-sm);
+  }
+
+  .cookie-table th,
+  .cookie-table td {
+    padding: var(--space-12) var(--space-16);
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .cookie-table th {
+    background: var(--bg-panel);
+    color: var(--text-primary);
+    font-weight: var(--weight-semibold);
+  }
+
+  .cookie-table td {
+    color: var(--text-secondary);
+  }
+
+  .cookie-table code {
+    font-size: var(--text-xs);
+    background: var(--bg-panel);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+</style>

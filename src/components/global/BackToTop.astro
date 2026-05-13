@@ -1,0 +1,81 @@
+---
+---
+
+<button
+  class="back-to-top"
+  id="back-to-top"
+  aria-label="Torna in cima alla pagina"
+  type="button"
+>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<script>
+  const btn = document.getElementById('back-to-top');
+  if (btn) {
+    let visible = false;
+
+    const toggle = () => {
+      const show = window.scrollY > 500;
+      if (show !== visible) {
+        visible = show;
+        btn.classList.toggle('back-to-top--visible', show);
+      }
+    };
+
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    bottom: var(--space-32);
+    left: var(--space-32);
+    z-index: 90;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(16px);
+    pointer-events: none;
+    transition: opacity var(--duration-normal),
+                transform var(--duration-normal) var(--ease-out-expo),
+                border-color var(--duration-normal),
+                color var(--duration-normal);
+  }
+
+  .back-to-top--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .back-to-top:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+  }
+
+  @media (max-width: 768px) {
+    .back-to-top {
+      bottom: var(--space-16);
+      left: var(--space-16);
+      width: 40px;
+      height: 40px;
+    }
+  }
+</style>

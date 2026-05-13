@@ -1,0 +1,81 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['webgl-wrap', className]} aria-hidden="true">
+  <canvas class="webgl-canvas" id="webgl-bg"></canvas>
+</div>
+
+<style>
+  .webgl-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .webgl-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* CSS fallback when WebGL unavailable or reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .webgl-canvas {
+      display: none;
+    }
+
+    .webgl-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        var(--color-terracotta-700) 0%,
+        var(--color-terracotta-500) 40%,
+        var(--bg-primary) 100%
+      );
+      opacity: 0.35;
+    }
+  }
+</style>
+
+<script>
+  async function initWebGL() {
+    const canvas = document.getElementById('webgl-bg') as HTMLCanvasElement | null;
+    if (!canvas) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      canvas.style.display = 'none';
+      return;
+    }
+
+    try {
+      const testCtx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (!testCtx) throw new Error('WebGL not supported');
+
+      const { ShaderBackground } = await import('../../scripts/webgl/shader-bg');
+
+      new ShaderBackground({
+        canvas,
+        colors: ['#1a1410', '#8b4513', '#c4653a'],
+      });
+    } catch {
+      canvas.style.display = 'none';
+      const wrap = canvas.parentElement;
+      if (wrap) {
+        wrap.style.background = `linear-gradient(135deg, #8b4513 0%, #c4653a 40%, #1a1410 100%)`;
+        wrap.style.opacity = '0.35';
+      }
+    }
+  }
+
+  initWebGL();
+</script>

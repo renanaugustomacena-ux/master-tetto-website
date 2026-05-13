@@ -1,0 +1,382 @@
+---
+import PageLayout from '@layouts/PageLayout.astro';
+import SectionHeader from '@components/ui/SectionHeader.astro';
+import { site, url } from '@data/site';
+import { buildWebPageSchema } from '@data/schema';
+
+const schema = buildWebPageSchema(
+  'Chi Siamo — MasterTetto SNC Verona',
+  'Due professionisti, una passione: il tetto perfetto. Scopri la nostra storia e la tecnica acrobatica che ci distingue.',
+);
+
+const values = [
+  { icon: '🛡️', title: 'Sicurezza', desc: 'La sicurezza è il nostro valore fondamentale. Ogni intervento segue protocolli rigorosi con DPI certificati e sistemi anticaduta.' },
+  { icon: '✦', title: 'Qualità', desc: 'Lavoro impeccabile, coppo per coppo. La qualità artigianale italiana è il nostro standard, mai un compromesso.' },
+  { icon: '◎', title: 'Trasparenza', desc: 'Preventivi dettagliati senza sorprese. Documentiamo ogni fase del lavoro con foto prima e dopo.' },
+  { icon: '◈', title: 'Puntualità', desc: 'Rispettiamo i tempi concordati. Il vostro tempo ha valore e noi lo trattiamo con rispetto.' },
+];
+
+const areas = [
+  'Verona città e provincia',
+  'Lago di Garda',
+  'Valpolicella',
+  'Lessinia',
+  'Bassa Veronese',
+  'Costa adriatica veneta',
+];
+---
+
+<PageLayout
+  title={`Chi Siamo — ${site.name} Verona`}
+  description="Due professionisti, una passione: il tetto perfetto. Scopri la nostra storia e la tecnica acrobatica che ci distingue."
+  schema={schema}
+>
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-labelledby="chi-heading">
+    <div class="container">
+      <span class="eyebrow" data-animate="fade-up">CHI SIAMO</span>
+      <h1 id="chi-heading" class="text-hero page-hero__title" data-animate="fade-up">
+        Maestri del Tetto
+      </h1>
+      <p class="text-lead page-hero__sub" data-animate="fade-up">
+        Due professionisti, una passione: il tetto perfetto.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section" aria-labelledby="storia-heading">
+    <div class="container">
+      <div class="story-layout">
+        <div class="story-content">
+          <SectionHeader
+            eyebrow="LA NOSTRA STORIA"
+            title="Passione per il Tetto"
+            align="left"
+          />
+          <div class="story-text" data-animate="fade-up">
+            <p>
+              MasterTetto SNC nasce dalla passione condivisa di due professionisti veronesi
+              per l'arte della copertura. Con anni di esperienza nel settore edilizio,
+              abbiamo scelto di specializzarci nella manutenzione acrobatica del tetto —
+              una tecnica che unisce competenza artigianale e innovazione.
+            </p>
+            <p>
+              Ogni giorno saliamo sui tetti di Verona e provincia con un obiettivo chiaro:
+              restituire ai nostri clienti una copertura perfetta, sicura e duratura.
+              Non siamo una grande azienda — siamo due artigiani che mettono la qualità
+              del lavoro al primo posto.
+            </p>
+            <p>
+              La nostra dimensione ci permette di seguire ogni progetto personalmente,
+              dall'ispezione iniziale alla consegna finale. Quando vi affidate a MasterTetto,
+              lavorate direttamente con noi.
+            </p>
+          </div>
+        </div>
+        <div class="story-visual" data-animate="scale-in">
+          <div class="story-placeholder">
+            <span>Foto team</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNIQUE -->
+  <section class="section section--alt" aria-labelledby="tecnica-heading">
+    <div class="container">
+      <SectionHeader
+        eyebrow="LA NOSTRA TECNICA"
+        title="Perché Acrobatica?"
+        description="Lavoriamo su fune, senza ponteggi. Ecco i vantaggi per voi."
+      />
+      <div class="technique-grid">
+        <div class="technique-card" data-animate="fade-up">
+          <div class="technique-card__icon">🏗️</div>
+          <h3>Ponteggio Tradizionale</h3>
+          <ul class="technique-list technique-list--con">
+            <li>Costo elevato del noleggio</li>
+            <li>Tempi lunghi per montaggio</li>
+            <li>Permessi comunali necessari</li>
+            <li>Disturbo a condomini e vicini</li>
+            <li>Accesso limitato ai mezzi</li>
+          </ul>
+        </div>
+        <div class="technique-card technique-card--highlight" data-animate="fade-up">
+          <div class="technique-card__icon">🧗</div>
+          <h3>Tecnica Acrobatica</h3>
+          <ul class="technique-list technique-list--pro">
+            <li>Nessun costo di ponteggio</li>
+            <li>Intervento immediato</li>
+            <li>Nessun permesso richiesto</li>
+            <li>Zero disturbo</li>
+            <li>Accesso a qualsiasi copertura</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section" aria-labelledby="valori-heading">
+    <div class="container">
+      <SectionHeader
+        eyebrow="I NOSTRI VALORI"
+        title="In Cosa Crediamo"
+      />
+      <div class="grid-4 values-grid">
+        {
+          values.map((v) => (
+            <div class="value-card" data-animate="fade-up">
+              <span class="value-card__icon">{v.icon}</span>
+              <h3 class="value-card__title">{v.title}</h3>
+              <p class="value-card__desc">{v.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="section section--alt" aria-labelledby="area-heading">
+    <div class="container">
+      <div class="area-layout">
+        <div class="area-content">
+          <SectionHeader
+            eyebrow="DOVE OPERIAMO"
+            title="La Nostra Area di Servizio"
+            description="Operiamo in tutta la provincia di Verona e nelle zone limitrofe del Veneto."
+            align="left"
+          />
+          <ul class="area-list" data-animate="fade-up">
+            {areas.map((a) => (
+              <li>{a}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="area-visual" data-animate="scale-in">
+          <div class="area-placeholder">
+            <span>Mappa Veneto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section" aria-labelledby="cta-chi">
+    <div class="container" style="text-align: center;">
+      <SectionHeader
+        eyebrow="LAVORA CON NOI"
+        title="Pronti a Salire sul Tuo Tetto"
+        description="Contattaci per un sopralluogo gratuito. Ti mostreremo di persona la qualità del nostro lavoro."
+      />
+      <div class="cta-buttons" data-animate="fade-up">
+        <a href={url('/contatti/')} class="btn btn--primary btn--lg">Richiedi Preventivo</a>
+        <a href={`tel:${site.phone}`} class="btn btn--outline btn--lg">
+          Chiama {site.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero {
+    padding-top: calc(80px + var(--space-64));
+    padding-bottom: var(--space-64);
+    text-align: center;
+  }
+
+  .page-hero__title {
+    margin-bottom: var(--space-16);
+  }
+
+  .page-hero__sub {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .section--alt {
+    background: var(--bg-secondary);
+  }
+
+  /* STORY */
+  .story-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-64);
+    align-items: center;
+  }
+
+  .story-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .story-placeholder,
+  .area-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  /* TECHNIQUE */
+  .technique-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-32);
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  .technique-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    text-align: center;
+  }
+
+  .technique-card--highlight {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-brand);
+  }
+
+  .technique-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-16);
+  }
+
+  .technique-card h3 {
+    font-size: var(--text-h4);
+    margin-bottom: var(--space-24);
+  }
+
+  .technique-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    text-align: left;
+  }
+
+  .technique-list li {
+    padding-left: var(--space-24);
+    position: relative;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  .technique-list--con li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: var(--color-error);
+    font-weight: var(--weight-bold);
+  }
+
+  .technique-list--pro li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-success);
+    font-weight: var(--weight-bold);
+  }
+
+  /* VALUES */
+  .value-card {
+    text-align: center;
+    padding: var(--space-32);
+  }
+
+  .value-card__icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: var(--space-16);
+  }
+
+  .value-card__title {
+    font-size: var(--text-h4);
+    margin-bottom: var(--space-8);
+  }
+
+  .value-card__desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-normal);
+  }
+
+  /* AREA */
+  .area-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-64);
+    align-items: center;
+  }
+
+  .area-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+
+  .area-list li {
+    padding-left: var(--space-24);
+    position: relative;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .area-list li::before {
+    content: '📍';
+    position: absolute;
+    left: 0;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--bg-panel);
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-16);
+    flex-wrap: wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .story-layout,
+    .area-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-32);
+    }
+
+    .technique-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .area-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
