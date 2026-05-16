@@ -13,6 +13,7 @@ const { currentPath } = Astro.props;
   <nav class="nav__inner container" aria-label="Navigazione principale">
     <a href={url('/')} class="nav__logo" aria-label={`${site.name} — Torna alla homepage`}>
       <img src={url('/images/logo-icon-only.png')} alt={site.name} class="nav__logo-img" />
+      <span class="nav__logo-text">MASTER<strong>TETTO</strong></span>
     </a>
 
     <ul class="nav__links" role="list">
@@ -107,10 +108,24 @@ const { currentPath } = Astro.props;
   }
 
   .nav__logo-img {
-    height: 56px;
+    height: 48px;
     width: auto;
     display: block;
     object-fit: contain;
+  }
+
+  .nav__logo-text {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: var(--weight-light);
+    letter-spacing: var(--tracking-wider);
+    color: var(--text-primary);
+    text-transform: uppercase;
+  }
+
+  .nav__logo-text strong {
+    font-weight: var(--weight-bold);
+    color: var(--accent-primary);
   }
 
   .nav__links {

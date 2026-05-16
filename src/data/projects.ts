@@ -18,7 +18,7 @@ export const projects: ProjectShowcase[] = [
   },
   {
     title: 'Fissaggio coppi con schiuma poliuretanica',
-    description: 'Sostituzione e fissaggio coppi con schiuma poliuretanica espansa per garantire tenuta e stabilità della copertura.',
+    description: 'Applicazione di schiuma poliuretanica tra coppo e coppo per incollaggio e sigillatura, impedendo spostamenti da vento e infiltrazioni tra gli elementi della copertura.',
 
     category: 'manutenzione',
     images: [
