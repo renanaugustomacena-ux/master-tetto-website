@@ -36,7 +36,7 @@ const { currentPath } = Astro.props;
       }
       <li>
         <a
-          href={site.socialLinks.find(s => s.platform === 'instagram')?.url}
+          href={site.instagram}
           class="nav__link nav__instagram"
           target="_blank"
           rel="noopener"
@@ -88,23 +88,24 @@ const { currentPath } = Astro.props;
       <a href={`tel:${site.phone}`} class="nav__mobile-phone">
         {site.phoneDisplay}
       </a>
-      <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener">
-        WhatsApp
-      </a>
-      <a
-        href={site.socialLinks.find(s => s.platform === 'instagram')?.url}
-        class="nav__mobile-instagram"
-        target="_blank"
-        rel="noopener"
-        aria-label="Instagram"
-      >
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-          <circle cx="12" cy="12" r="5"></circle>
-          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
-        </svg>
-        <span>Instagram</span>
-      </a>
+      <div class="nav__mobile-buttons">
+        <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+          WhatsApp
+        </a>
+        <a
+          href={site.instagram}
+          class="nav__mobile-instagram"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="5"></circle>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </header>
@@ -291,17 +292,27 @@ const { currentPath } = Astro.props;
     letter-spacing: var(--tracking-wide);
   }
 
+  .nav__mobile-buttons {
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+  }
+
   .nav__mobile-instagram {
     display: flex;
     align-items: center;
-    gap: var(--space-8);
-    font-size: var(--text-lg);
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
     color: var(--text-secondary);
-    transition: color var(--duration-fast);
+    transition: color var(--duration-fast), border-color var(--duration-fast);
   }
 
   .nav__mobile-instagram:hover {
     color: #E1306C;
+    border-color: #E1306C;
   }
 
   @media (max-width: 768px) {

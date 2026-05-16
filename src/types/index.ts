@@ -5,6 +5,7 @@ export interface SiteConfig {
   phone: string;
   phoneDisplay: string;
   whatsapp: string;
+  instagram: string;
   piva: string;
   cf: string;
   address: PostalAddress;
