@@ -34,6 +34,21 @@ const { currentPath } = Astro.props;
           </li>
         ))
       }
+      <li>
+        <a
+          href={site.socialLinks.find(s => s.platform === 'instagram')?.url}
+          class="nav__link nav__instagram"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <circle cx="12" cy="12" r="5"></circle>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+      </li>
     </ul>
 
     <button
@@ -75,6 +90,20 @@ const { currentPath } = Astro.props;
       </a>
       <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener">
         WhatsApp
+      </a>
+      <a
+        href={site.socialLinks.find(s => s.platform === 'instagram')?.url}
+        class="nav__mobile-instagram"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <circle cx="12" cy="12" r="5"></circle>
+          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
+        </svg>
+        <span>Instagram</span>
       </a>
     </div>
   </div>
@@ -138,7 +167,7 @@ const { currentPath } = Astro.props;
 
   .nav__link {
     padding: var(--space-8) var(--space-16);
-    font-size: var(--text-sm);
+    font-size: 1rem;
     font-weight: var(--weight-semibold);
     letter-spacing: var(--tracking-wide);
     color: var(--text-secondary);
@@ -157,6 +186,18 @@ const { currentPath } = Astro.props;
   .nav__link--cta {
     color: var(--text-primary);
     margin-left: var(--space-8);
+  }
+
+  .nav__instagram {
+    display: flex;
+    align-items: center;
+    padding: var(--space-8);
+    color: var(--text-secondary);
+    transition: color var(--duration-fast);
+  }
+
+  .nav__instagram:hover {
+    color: #E1306C;
   }
 
   /* Hamburger */
@@ -248,6 +289,19 @@ const { currentPath } = Astro.props;
     font-size: var(--text-lg);
     color: var(--text-secondary);
     letter-spacing: var(--tracking-wide);
+  }
+
+  .nav__mobile-instagram {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    transition: color var(--duration-fast);
+  }
+
+  .nav__mobile-instagram:hover {
+    color: #E1306C;
   }
 
   @media (max-width: 768px) {

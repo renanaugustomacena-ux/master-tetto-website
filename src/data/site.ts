@@ -33,7 +33,7 @@ export const site: SiteConfig = {
   socialLinks: [
     // DA CONFERMARE — placeholder URLs
     { platform: 'facebook', url: '#', label: 'Facebook' },
-    { platform: 'instagram', url: '#', label: 'Instagram' },
+    { platform: 'instagram', url: 'https://www.instagram.com/mastertetto?igsh=d3I2YXRicGhhb291', label: 'Instagram' },
     { platform: 'tiktok', url: '#', label: 'TikTok' },
   ],
 };
