@@ -58,7 +58,7 @@ const schema = buildWebPageSchema(
                   href={`${site.whatsapp}&text=${encodeURIComponent(`Buongiorno, vorrei informazioni sul servizio: ${service.title}`)}`}
                   class="btn btn--primary"
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   Richiedi preventivo
                 </a>
@@ -93,7 +93,7 @@ const schema = buildWebPageSchema(
         description="Contattaci per un sopralluogo gratuito e un preventivo senza impegno."
       />
       <div class="cta-section__buttons" data-animate="fade-up">
-        <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+        <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">
           Scrivici su WhatsApp
         </a>
         <a href={url('/contatti/')} class="btn btn--outline btn--lg">

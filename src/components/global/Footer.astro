@@ -43,7 +43,7 @@ import { site, url } from '@data/site';
             <a href={`mailto:${site.email}`} class="footer__link">{site.email}</a>
           </li>
           <li>
-            <a href={site.whatsapp} class="footer__link" target="_blank" rel="noopener">
+            <a href={site.whatsapp} class="footer__link" target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>
           </li>
@@ -60,7 +60,7 @@ import { site, url } from '@data/site';
                 href={social.url}
                 class="footer__social-link"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 aria-label={social.label}
               >
                 {social.label}
