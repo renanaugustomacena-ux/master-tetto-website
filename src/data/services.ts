@@ -4,7 +4,7 @@ export const services: Service[] = [
   {
     num: '01',
     title: 'Sistema Anticaduta',
-    description: 'Installazione di linee vita e sistemi di protezione anticaduta conformi UNI EN 795.',
+    description: 'Installazione provvisoria di sistemi di protezione anticaduta per ogni intervento.',
     longDescription:
       'Progettiamo e installiamo sistemi anticaduta permanenti per la sicurezza degli operatori durante i futuri interventi di manutenzione. I nostri impianti sono certificati secondo le normative UNI EN 795 e UNI 11560, e conformi al D.Lgs. 81/2008 in materia di sicurezza sul lavoro. Ogni installazione viene collaudata e certificata.',
     icon: 'shield-check',
@@ -19,9 +19,9 @@ export const services: Service[] = [
   {
     num: '02',
     title: 'Senza Ponteggi',
-    description: 'Lavori su fune con tecnica acrobatica — nessun ponteggio, nessun disturbo.',
+    description: 'Interventi in quota senza ponteggi — più rapidi, più economici, zero ingombro.',
     longDescription:
-      'La nostra specialità: interveniamo su qualsiasi copertura utilizzando tecniche di accesso su fune e scale elettriche professionali, eliminando completamente la necessità di ponteggi. Questo significa costi ridotti, tempi di intervento più rapidi e nessun disagio per il condominio o i vicini. Lavoriamo in totale sicurezza con imbragature certificate e DPI di ultima generazione.',
+      'La nostra specialità: interveniamo su qualsiasi copertura utilizzando tecniche acrobatiche e scale elettriche professionali, eliminando completamente la necessità di ponteggi. Questo significa costi ridotti, tempi di intervento più rapidi e nessun disagio per il condominio o i vicini. Lavoriamo in totale sicurezza con imbragature certificate e DPI di ultima generazione.',
     icon: 'rope',
     slug: 'senza-ponteggi',
     benefits: [
@@ -104,21 +104,6 @@ export const services: Service[] = [
       'Acqua demineralizzata — nessun residuo',
       'Nessun danno alle superfici',
       'Accesso rapido senza ponteggi',
-    ],
-  },
-  {
-    num: '08',
-    title: 'Isolamento Sottotetto',
-    description: 'Isolamento termico con lana minerale per comfort e risparmio energetico.',
-    longDescription:
-      'Un sottotetto non isolato è responsabile fino al 30% della dispersione termica di un edificio. Installiamo pannelli in lana minerale di alta qualità, materiale ignifugo e traspirante che garantisce isolamento termico in inverno e fresco in estate. L\'intervento si ripaga da solo grazie al risparmio in bolletta.',
-    icon: 'thermometer',
-    slug: 'isolamento-sottotetto',
-    benefits: [
-      'Riduzione fino al 30% dei costi energetici',
-      'Comfort termico estate e inverno',
-      'Materiale ignifugo e traspirante',
-      'Intervento rapido e non invasivo',
     ],
   },
 ];

@@ -36,7 +36,6 @@ export function buildLocalBusinessSchema() {
       'Rifacimento coperture',
       'Linee vita anticaduta',
       'Pulizia pannelli solari',
-      'Isolamento sottotetto',
     ],
     sameAs: site.socialLinks
       .filter((l) => l.url !== '#')

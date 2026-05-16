@@ -75,21 +75,26 @@ const areas = [
           </div>
         </div>
         <div class="story-visual" data-animate="scale-in">
-          <div class="story-placeholder">
-            <span>Foto team</span>
-          </div>
+          <img
+            src={url('/images/chi-siamo-team.jpeg')}
+            alt="Il team MasterTetto SNC al lavoro su piattaforma aerea"
+            class="story-img"
+            width="800"
+            height="600"
+            loading="eager"
+          />
         </div>
       </div>
     </div>
   </section>
 
   <!-- TECHNIQUE -->
-  <section class="section section--alt" aria-labelledby="tecnica-heading">
+  <section class="section section--bg" aria-labelledby="tecnica-heading" style={`--section-bg: url(${url('/images/la-nostra-tecnica.jpeg')})`}>
     <div class="container">
       <SectionHeader
         eyebrow="LA NOSTRA TECNICA"
         title="Perché Acrobatica?"
-        description="Lavoriamo su fune, senza ponteggi. Ecco i vantaggi per voi."
+        description="Lavoriamo senza ponteggi, in quota e in sicurezza. Ecco i vantaggi per voi."
       />
       <div class="technique-grid">
         <div class="technique-card" data-animate="fade-up">
@@ -157,16 +162,24 @@ const areas = [
           </ul>
         </div>
         <div class="area-visual" data-animate="scale-in">
-          <div class="area-placeholder">
-            <span>Mappa Veneto</span>
-          </div>
+          <iframe
+            class="area-map"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d180000!2d10.99!3d45.44!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sit!2sit"
+            width="100%"
+            height="100%"
+            style="border:0; border-radius: var(--radius-lg);"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Area operativa MasterTetto — Provincia di Verona"
+          ></iframe>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section cta-section" aria-labelledby="cta-chi">
+  <section class="section section--bg cta-section" aria-labelledby="cta-chi" style={`--section-bg: url(${url('/images/i-nostri-lavori.jpeg')})`}>
     <div class="container" style="text-align: center;">
       <SectionHeader
         eyebrow="LAVORA CON NOI"
@@ -203,6 +216,21 @@ const areas = [
     background: var(--bg-secondary);
   }
 
+  .section--bg {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), var(--section-bg) center / cover no-repeat;
+    color: #fff;
+  }
+
+  .section--bg :global(.eyebrow),
+  .section--bg :global(.section-header__title),
+  .section--bg :global(.section-header__desc),
+  .section--bg h3,
+  .section--bg li,
+  .section--bg p {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
   /* STORY */
   .story-layout {
     display: grid;
@@ -219,18 +247,24 @@ const areas = [
     line-height: var(--leading-relaxed);
   }
 
-  .story-placeholder,
-  .area-placeholder {
+  .story-img {
     width: 100%;
+    height: auto;
     aspect-ratio: 4 / 3;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
+    object-fit: cover;
     border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-size: var(--text-sm);
+  }
+
+  .area-visual {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .area-map {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   /* TECHNIQUE */
@@ -243,8 +277,9 @@ const areas = [
   }
 
   .technique-card {
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-lg);
     padding: var(--space-32);
     text-align: center;
@@ -252,6 +287,7 @@ const areas = [
 
   .technique-card--highlight {
     border-color: var(--accent-primary);
+    background: rgba(198, 40, 40, 0.12);
     box-shadow: var(--shadow-brand);
   }
 
@@ -352,9 +388,6 @@ const areas = [
   }
 
   /* CTA */
-  .cta-section {
-    background: var(--bg-panel);
-  }
 
   .cta-buttons {
     display: flex;

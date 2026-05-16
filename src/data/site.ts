@@ -28,7 +28,7 @@ export const site: SiteConfig = {
   },
   tagline: 'Manutenzione Acrobatica del Tetto',
   description:
-    'Specialisti nella manutenzione e rifacimento del tetto senza ponteggi a Verona. Lavori acrobatici su fune in tutta sicurezza. Preventivo gratuito.',
+    'Specialisti nella manutenzione e rifacimento del tetto senza ponteggi a Verona. Interventi acrobatici in quota in tutta sicurezza. Preventivo gratuito.',
   foundingYear: 2020, // DA CONFERMARE
   socialLinks: [
     // DA CONFERMARE — placeholder URLs

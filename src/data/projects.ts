@@ -86,16 +86,6 @@ export const projects: ProjectShowcase[] = [
     },
     completedDate: '2024-08',
   },
-  {
-    title: 'Isolamento sottotetto',
-    description: 'Posa pannelli in lana minerale per isolamento termico sottotetto non abitabile.',
-    location: 'Negrar',
-    category: 'isolamento',
-    images: [
-      { src: '/images/lavori/placeholder-08.webp', alt: 'Isolamento sottotetto con lana minerale', width: 800, height: 600 },
-    ],
-    completedDate: '2024-07',
-  },
 ];
 
 export const categoryLabels: Record<string, string> = {
@@ -104,7 +94,6 @@ export const categoryLabels: Record<string, string> = {
   lucernari: 'Lucernari',
   'pannelli-solari': 'Pannelli Solari',
   grondaie: 'Grondaie',
-  isolamento: 'Isolamento',
   'linea-vita': 'Linea Vita',
   lattoneria: 'Lattoneria',
 };

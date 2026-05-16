@@ -79,7 +79,6 @@ export type ServiceCategory =
   | 'lucernari'
   | 'pannelli-solari'
   | 'grondaie'
-  | 'isolamento'
   | 'linea-vita'
   | 'lattoneria';
 
