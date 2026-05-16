@@ -7,7 +7,7 @@ import { buildWebPageSchema } from '@data/schema';
 
 const schema = buildWebPageSchema(
   'Lavori Completati — Portfolio',
-  'Galleria dei nostri lavori: prima e dopo, rifacimenti completi, installazione lucernari e linee vita.',
+  'Galleria dei nostri lavori: prima e dopo, rifacimenti completi, installazione lucernari e sistemi anticaduta.',
 );
 
 const usedCategories = [...new Set(projects.map((p) => p.category))];
@@ -15,7 +15,7 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
 
 <PageLayout
   title={`Lavori Completati — Portfolio | ${site.name}`}
-  description="Galleria dei nostri lavori: prima e dopo, rifacimenti completi, installazione lucernari e linee vita. Qualità certificata."
+  description="Galleria dei nostri lavori: prima e dopo, rifacimenti completi, installazione lucernari e sistemi anticaduta. Qualità certificata."
   schema={schema}
 >
   <!-- PAGE HERO -->
@@ -61,9 +61,20 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
               style={`--delay: ${(i % 4) * 0.08}s`}
             >
               <div class="gallery-card__media">
-                <div class="gallery-card__placeholder">
-                  <span>{project.title.charAt(0)}</span>
-                </div>
+                {project.images[0]?.src.includes('placeholder') ? (
+                  <div class="gallery-card__placeholder">
+                    <span>{project.title.charAt(0)}</span>
+                  </div>
+                ) : (
+                  <img
+                    src={url(project.images[0].src)}
+                    alt={project.images[0].alt}
+                    class="gallery-card__img"
+                    width="800"
+                    height="600"
+                    loading="lazy"
+                  />
+                )}
                 {project.beforeAfter && (
                   <span class="gallery-card__badge">Prima / Dopo</span>
                 )}
@@ -73,7 +84,6 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
                 <p class="gallery-card__desc">{project.description}</p>
                 <div class="gallery-card__meta">
                   <span class="badge">{categoryLabels[project.category]}</span>
-                  <span class="gallery-card__location">📍 {project.location}</span>
                 </div>
               </div>
             </article>
@@ -219,6 +229,13 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
     color: rgba(198, 40, 40, 0.1);
   }
 
+  .gallery-card__img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+
   .gallery-card__badge {
     position: absolute;
     top: var(--space-12);
@@ -254,10 +271,6 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
     flex-wrap: wrap;
   }
 
-  .gallery-card__location {
-    font-size: var(--text-xs);
-    color: var(--text-muted);
-  }
 
   .gallery-note {
     text-align: center;

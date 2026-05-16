@@ -53,7 +53,7 @@ export interface Service {
 export interface ProjectShowcase {
   title: string;
   description: string;
-  location: string;
+  location?: string;
   category: ServiceCategory;
   images: ProjectImage[];
   beforeAfter?: BeforeAfterPair;

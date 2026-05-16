@@ -4,7 +4,7 @@ export const projects: ProjectShowcase[] = [
   {
     title: 'Rifacimento copertura in coppi',
     description: 'Rifacimento completo del manto di copertura con coppi nuovi su villetta bifamiliare.',
-    location: 'Verona',
+
     category: 'rifacimento',
     images: [
       { src: '/images/lavori/placeholder-01.webp', alt: 'Rifacimento copertura Verona — dopo', width: 800, height: 600 },
@@ -19,17 +19,17 @@ export const projects: ProjectShowcase[] = [
   {
     title: 'Ripasso tetto condominio',
     description: 'Ripasso completo con sostituzione coppi rotti e riallineamento manto su condominio 6 unità.',
-    location: 'San Giovanni Lupatoto',
+
     category: 'manutenzione',
     images: [
-      { src: '/images/lavori/placeholder-02.webp', alt: 'Ripasso tetto condominio — dopo', width: 800, height: 600 },
+      { src: '/images/lavori/manutenzione-lavori.jpeg', alt: 'Ripasso tetto condominio — dopo', width: 800, height: 600 },
     ],
     completedDate: '2025-02',
   },
   {
     title: 'Sostituzione lucernario',
     description: 'Rimozione lucernario opacizzato e installazione nuovo modello ad alta efficienza.',
-    location: 'Villafranca di Verona',
+
     category: 'lucernari',
     images: [
       { src: '/images/lavori/placeholder-03.webp', alt: 'Lucernario nuovo installato', width: 800, height: 600 },
@@ -44,7 +44,7 @@ export const projects: ProjectShowcase[] = [
   {
     title: 'Pulizia pannelli fotovoltaici',
     description: 'Pulizia professionale impianto 6kW con acqua demineralizzata su tetto a coppi.',
-    location: 'Bussolengo',
+
     category: 'pannelli-solari',
     images: [
       { src: '/images/lavori/placeholder-04.webp', alt: 'Pannelli fotovoltaici puliti', width: 800, height: 600 },
@@ -54,7 +54,7 @@ export const projects: ProjectShowcase[] = [
   {
     title: 'Pulizia grondaie e pluviali',
     description: 'Pulizia completa grondaie intasate da foglie e detriti su edificio residenziale.',
-    location: 'Pescantina',
+
     category: 'grondaie',
     images: [
       { src: '/images/lavori/placeholder-05.webp', alt: 'Grondaia pulita e funzionante', width: 800, height: 600 },
@@ -64,7 +64,7 @@ export const projects: ProjectShowcase[] = [
   {
     title: 'Installazione linea vita',
     description: 'Installazione sistema anticaduta certificato UNI EN 795 su copertura industriale.',
-    location: 'Verona',
+
     category: 'linea-vita',
     images: [
       { src: '/images/lavori/placeholder-06.webp', alt: 'Linea vita installata su tetto', width: 800, height: 600 },
@@ -74,7 +74,7 @@ export const projects: ProjectShowcase[] = [
   {
     title: 'Rifacimento copertura villa',
     description: 'Rifacimento completo con nuova impermeabilizzazione e isolamento termico.',
-    location: 'Lago di Garda',
+
     category: 'rifacimento',
     images: [
       { src: '/images/lavori/placeholder-07.webp', alt: 'Villa con copertura nuova — Lago di Garda', width: 800, height: 600 },
