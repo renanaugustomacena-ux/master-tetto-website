@@ -1,0 +1,7 @@
+# Security Policy for MasterTetto
+# https://securitytxt.org/
+
+Contact: mailto:mastertetto2821@gmail.com
+Expires: 2027-05-16T00:00:00.000Z
+Preferred-Languages: it, en
+Canonical: https://mastertetto.it/.well-known/security.txt

@@ -1,6 +1,5 @@
 ---
 import PageLayout from '@layouts/PageLayout.astro';
-import SectionHeader from '@components/ui/SectionHeader.astro';
 import { site, url } from '@data/site';
 import { buildWebPageSchema } from '@data/schema';
 
@@ -226,6 +225,11 @@ const serviceOptions = [
   const feedback = document.getElementById('form-feedback');
   if (!form || !feedback) throw new Error('Form elements missing');
 
+  const formLoadedAt = Date.now();
+  const MIN_SUBMIT_TIME_MS = 3000;
+  let lastSubmitAt = 0;
+  const RATE_LIMIT_MS = 10000;
+
   const validators: Record<string, (el: HTMLInputElement | HTMLTextAreaElement) => string> = {
     nome: (el) => el.value.trim().length < 2 ? 'Inserisci il tuo nome completo.' : '',
     telefono: (el) => !/^\+?[\d\s\-()]{7,}$/.test(el.value.trim()) ? 'Inserisci un numero di telefono valido.' : '',
@@ -256,6 +260,14 @@ const serviceOptions = [
     const hp = (form.elements.namedItem('_gotcha') as HTMLInputElement)?.value;
     if (hp) return;
 
+    const now = Date.now();
+    if (now - formLoadedAt < MIN_SUBMIT_TIME_MS) return;
+    if (now - lastSubmitAt < RATE_LIMIT_MS) {
+      feedback.textContent = 'Attendi qualche secondo prima di riprovare.';
+      feedback.className = 'form-feedback form-feedback--error';
+      return;
+    }
+
     const allValid = Object.keys(validators).every(validateField);
     if (!allValid) {
       feedback.textContent = 'Correggi gli errori evidenziati prima di inviare.';
@@ -266,6 +278,7 @@ const serviceOptions = [
     const btn = form.querySelector('.contact-form__submit') as HTMLButtonElement;
     btn.disabled = true;
     btn.textContent = 'Invio in corso...';
+    lastSubmitAt = now;
 
     try {
       const res = await fetch(form.action, {
