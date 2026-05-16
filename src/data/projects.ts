@@ -32,12 +32,11 @@ export const projects: ProjectShowcase[] = [
 
     category: 'lucernari',
     images: [
-      { src: '/images/lavori/placeholder-03.webp', alt: 'Lucernario nuovo installato', width: 800, height: 600 },
+      { src: '/images/lavori/lucernari-prima-dopo.jpeg', alt: 'Sostituzione lucernario — prima e dopo', width: 800, height: 600 },
     ],
     beforeAfter: {
-      before: { src: '/images/lavori/placeholder-03-prima.webp', alt: 'Lucernario vecchio opacizzato', width: 800, height: 600 },
-      after: { src: '/images/lavori/placeholder-03-dopo.webp', alt: 'Lucernario nuovo trasparente', width: 800, height: 600 },
-      caption: 'Villafranca di Verona',
+      before: { src: '/images/lavori/lucernari-prima-dopo.jpeg', alt: 'Lucernario vecchio opacizzato', width: 800, height: 600 },
+      after: { src: '/images/lavori/lucernari-prima-dopo.jpeg', alt: 'Lucernario nuovo trasparente', width: 800, height: 600 },
     },
     completedDate: '2025-01',
   },
@@ -57,8 +56,12 @@ export const projects: ProjectShowcase[] = [
 
     category: 'grondaie',
     images: [
-      { src: '/images/lavori/placeholder-05.webp', alt: 'Grondaia pulita e funzionante', width: 800, height: 600 },
+      { src: '/images/lavori/grondaie-prima-dopo.jpeg', alt: 'Pulizia grondaie — prima e dopo', width: 800, height: 600 },
     ],
+    beforeAfter: {
+      before: { src: '/images/lavori/grondaie-prima-dopo.jpeg', alt: 'Grondaia intasata da foglie e detriti', width: 800, height: 600 },
+      after: { src: '/images/lavori/grondaie-prima-dopo.jpeg', alt: 'Grondaia pulita e funzionante', width: 800, height: 600 },
+    },
     completedDate: '2024-10',
   },
   {
