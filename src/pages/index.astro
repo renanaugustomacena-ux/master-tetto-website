@@ -40,7 +40,7 @@ const schema = buildLocalBusinessSchema();
   </section>
 
   <!-- SERVIZI PREVIEW -->
-  <section class="section" id="servizi" aria-labelledby="servizi-heading">
+  <section class="section section--bg" id="servizi" aria-labelledby="servizi-heading" style={`--section-bg: url(${url('/images/bg-tetto-panorama.jpeg')})`}>
     <div class="container">
       <SectionHeader
         eyebrow="COSA FACCIAMO"
@@ -65,7 +65,7 @@ const schema = buildLocalBusinessSchema();
   </section>
 
   <!-- PERCHÉ NOI -->
-  <section class="section why-us" aria-labelledby="why-heading">
+  <section class="section section--bg why-us" aria-labelledby="why-heading" style={`--section-bg: url(${url('/images/bg-tetto-closeup.jpeg')})`}>
     <div class="container">
       <SectionHeader
         eyebrow="PERCHÉ MASTERTETTO"
@@ -97,7 +97,7 @@ const schema = buildLocalBusinessSchema();
   </section>
 
   <!-- CTA CONTATTI -->
-  <section class="section cta-section" aria-labelledby="cta-heading">
+  <section class="section section--bg cta-section" aria-labelledby="cta-heading" style={`--section-bg: url(${url('/images/bg-tetto-panorama.jpeg')})`}>
     <div class="container" style="text-align: center;">
       <SectionHeader
         eyebrow="CONTATTACI"
@@ -170,6 +170,21 @@ const schema = buildLocalBusinessSchema();
     color: var(--text-muted);
   }
 
+  /* SECTION BG */
+  .section--bg {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), var(--section-bg) center / cover no-repeat;
+    color: #fff;
+  }
+
+  .section--bg :global(.eyebrow),
+  .section--bg :global(.section-header__title),
+  .section--bg :global(.section-header__desc),
+  .section--bg h3,
+  .section--bg p {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
   /* SERVICES GRID */
   .services-grid {
     display: grid;
@@ -184,13 +199,22 @@ const schema = buildLocalBusinessSchema();
     gap: var(--space-12);
   }
 
+  .section--bg .service-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
   .service-card__num {
     font-family: var(--font-display);
     font-size: var(--text-h2);
     font-weight: var(--weight-bold);
-    color: var(--accent-primary-dim);
     color: rgba(198, 40, 40, 0.15);
     line-height: 1;
+  }
+
+  .section--bg .service-card__num {
+    color: rgba(255, 255, 255, 0.2);
   }
 
   .service-card__title {
@@ -209,9 +233,6 @@ const schema = buildLocalBusinessSchema();
   }
 
   /* WHY US */
-  .why-us {
-    background: var(--bg-secondary);
-  }
 
   .why-card {
     text-align: center;
@@ -236,9 +257,6 @@ const schema = buildLocalBusinessSchema();
   }
 
   /* CTA SECTION */
-  .cta-section {
-    background: var(--bg-panel);
-  }
 
   .cta-section__buttons {
     display: flex;
