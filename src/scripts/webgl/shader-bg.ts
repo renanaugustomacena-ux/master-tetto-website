@@ -34,7 +34,6 @@ export class ShaderBackground {
     const {
       canvas,
       colors = ['#1a1410', '#8b4513', '#c4653a'],
-      speed = 1,
     } = options;
 
     this.canvas = canvas;
