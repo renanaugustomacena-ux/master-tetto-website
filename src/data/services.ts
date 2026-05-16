@@ -4,16 +4,17 @@ export const services: Service[] = [
   {
     num: '01',
     title: 'Sistema Anticaduta',
-    description: 'Installazione provvisoria di sistemi di protezione anticaduta per ogni intervento.',
+    description: 'Installazione provvisoria di protezioni anticaduta per ogni singolo intervento.',
     longDescription:
-      'Progettiamo e installiamo sistemi anticaduta permanenti per la sicurezza degli operatori durante i futuri interventi di manutenzione. I nostri impianti sono certificati secondo le normative UNI EN 795 e UNI 11560, e conformi al D.Lgs. 81/2008 in materia di sicurezza sul lavoro. Ogni installazione viene collaudata e certificata.',
+      'Prima di ogni lavoro installiamo un sistema anticaduta provvisorio dedicato, che viene rimosso al termine dell\'intervento. Non lasciamo nulla montato sulla copertura: ogni cantiere ha la sua protezione su misura, conforme al D.Lgs. 81/2008 in materia di sicurezza sul lavoro. Imbragature certificate, DPI di ultima generazione e procedure rigorose garantiscono la massima sicurezza per ogni intervento.',
     icon: 'shield-check',
     slug: 'sistema-anticaduta',
+    image: '/images/servizi/sistema-anticaduta.jpeg',
     benefits: [
       'Conformità normativa D.Lgs. 81/2008',
-      'Certificazione UNI EN 795',
-      'Collaudo e documentazione inclusi',
-      'Manutenzione periodica programmabile',
+      'Sistema provvisorio rimosso a fine lavoro',
+      'DPI certificati per ogni operatore',
+      'Nessun ingombro permanente sulla copertura',
     ],
   },
   {
@@ -24,6 +25,7 @@ export const services: Service[] = [
       'La nostra specialità: interveniamo su qualsiasi copertura utilizzando tecniche acrobatiche e scale elettriche professionali, eliminando completamente la necessità di ponteggi. Questo significa costi ridotti, tempi di intervento più rapidi e nessun disagio per il condominio o i vicini. Lavoriamo in totale sicurezza con imbragature certificate e DPI di ultima generazione.',
     icon: 'rope',
     slug: 'senza-ponteggi',
+    image: '/images/servizi/senza-ponteggi.jpeg',
     benefits: [
       'Costi inferiori — nessun noleggio ponteggi',
       'Intervento rapido — nessuna attesa per permessi',
@@ -39,6 +41,7 @@ export const services: Service[] = [
       'Il ripasso del tetto è l\'intervento di manutenzione preventiva più importante per la longevità della copertura. Controlliamo ogni tegola e coppo, riallineiamo gli elementi spostati, sostituiamo quelli rotti e verifichiamo lo stato delle guaine impermeabilizzanti. Un ripasso regolare previene infiltrazioni costose e prolunga la vita del tetto di decenni.',
     icon: 'search',
     slug: 'ripasso-del-tetto',
+    image: '/images/servizi/ripasso-del-tetto.jpeg',
     benefits: [
       'Prevenzione infiltrazioni',
       'Sostituzione tegole rotte o spostate',
@@ -54,6 +57,7 @@ export const services: Service[] = [
       'Quando il ripasso non basta, eseguiamo il rifacimento completo della copertura. Rimuoviamo il manto esistente, verifichiamo e ripristiniamo la struttura portante, posiamo nuova guaina impermeabilizzante e installiamo il nuovo manto di copertura in coppi, tegole o materiali a scelta. Ogni fase è documentata con foto prima/dopo.',
     icon: 'home',
     slug: 'rifacimento-del-tetto',
+    image: '/images/servizi/rifacimento-del-tetto.jpeg',
     benefits: [
       'Rimozione completa del vecchio manto',
       'Ripristino struttura portante',
@@ -69,6 +73,7 @@ export const services: Service[] = [
       'Sostituiamo lucernari vecchi, opacizzati o danneggiati con modelli moderni ad alta efficienza energetica. Installiamo lucernari nuovi dove richiesto, garantendo una perfetta integrazione con il manto di copertura esistente e l\'assenza totale di infiltrazioni. Lavoriamo con le principali marche del settore.',
     icon: 'sun',
     slug: 'sostituzione-lucernari',
+    image: '/images/servizi/sostituzione-lucernari.jpeg',
     benefits: [
       'Maggiore luce naturale',
       'Miglior efficienza energetica',
@@ -84,6 +89,7 @@ export const services: Service[] = [
       'Grondaie intasate causano infiltrazioni, danni ai muri perimetrali e problemi strutturali. Eseguiamo la pulizia completa di grondaie e pluviali, rimuovendo foglie, detriti e depositi accumulati. Verifichiamo l\'integrità dei giunti e la corretta pendenza per garantire un deflusso ottimale delle acque piovane.',
     icon: 'droplets',
     slug: 'pulizia-grondaia',
+    image: '/images/servizi/pulizia-grondaia.jpeg',
     benefits: [
       'Prevenzione danni strutturali',
       'Rimozione completa di detriti',
@@ -99,6 +105,7 @@ export const services: Service[] = [
       'Pannelli sporchi possono perdere fino al 30% di efficienza. Eseguiamo la pulizia professionale con acqua demineralizzata e attrezzature specifiche che non danneggiano le superfici. Il nostro accesso acrobatico ci permette di raggiungere qualsiasi pannello senza strutture ausiliarie, riducendo tempi e costi dell\'intervento.',
     icon: 'zap',
     slug: 'pulizia-pannelli-fotovoltaici',
+    image: '/images/servizi/pulizia-pannelli.jpeg',
     benefits: [
       'Recupero fino al 30% di efficienza',
       'Acqua demineralizzata — nessun residuo',

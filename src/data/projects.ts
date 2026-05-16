@@ -17,12 +17,12 @@ export const projects: ProjectShowcase[] = [
     completedDate: '2025-03',
   },
   {
-    title: 'Ripasso tetto condominio',
-    description: 'Ripasso completo con sostituzione coppi rotti e riallineamento manto su condominio 6 unità.',
+    title: 'Fissaggio coppi con schiuma poliuretanica',
+    description: 'Sostituzione e fissaggio coppi con schiuma poliuretanica espansa per garantire tenuta e stabilità della copertura.',
 
     category: 'manutenzione',
     images: [
-      { src: '/images/lavori/manutenzione-lavori.jpeg', alt: 'Ripasso tetto condominio — dopo', width: 800, height: 600 },
+      { src: '/images/lavori/manutenzione-lavori.jpeg', alt: 'Fissaggio coppi con schiuma poliuretanica', width: 800, height: 600 },
     ],
     completedDate: '2025-02',
   },

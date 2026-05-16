@@ -48,6 +48,7 @@ export interface Service {
   icon: string;
   slug: string;
   benefits: string[];
+  image?: string;
 }
 
 export interface ProjectShowcase {
