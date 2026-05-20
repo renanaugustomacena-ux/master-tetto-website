@@ -12,7 +12,8 @@ import { site, url } from '@data/site';
         <p class="footer__tagline">{site.tagline}</p>
         <p class="footer__address">
           {site.address.street}<br />
-          {site.address.postalCode} {site.address.city} ({site.address.province})
+          {site.address.postalCode}
+          {site.address.city} ({site.address.province})
         </p>
       </div>
 
@@ -75,20 +76,34 @@ import { site, url } from '@data/site';
 
     <div class="footer__bottom">
       <p class="footer__legal">
-        &copy; {new Date().getFullYear()} {site.legalName} &mdash; P.IVA {site.piva}
+        &copy; {new Date().getFullYear()}
+        {site.legalName} &mdash; P.IVA {site.piva}
       </p>
       <div class="footer__bottom-links">
         <a href={url('/privacy/')} class="footer__link">Privacy Policy</a>
         <a href={url('/cookie/')} class="footer__link">Cookie Policy</a>
+        <button class="footer__link footer__cookie-btn" id="manage-cookies" type="button"
+          >Gestisci Cookie</button
+        >
       </div>
     </div>
   </div>
 </footer>
 
+<script>
+  document.getElementById('manage-cookies')?.addEventListener('click', () => {
+    localStorage.removeItem('cookie_consent');
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.hidden = false;
+  });
+</script>
+
 <style>
   .footer {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85)), var(--footer-bg) center / cover no-repeat;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85)),
+      var(--footer-bg) center / cover no-repeat;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
   }
@@ -189,6 +204,14 @@ import { site, url } from '@data/site';
   .footer__bottom-links {
     display: flex;
     gap: var(--space-24);
+  }
+
+  .footer__cookie-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    padding-block: var(--space-4);
   }
 
   @media (max-width: 768px) {

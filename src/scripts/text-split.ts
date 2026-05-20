@@ -1,4 +1,8 @@
-export function splitText(el: HTMLElement): { chars: HTMLElement[]; words: HTMLElement[]; lines: HTMLElement[] } {
+export function splitText(el: HTMLElement): {
+  chars: HTMLElement[];
+  words: HTMLElement[];
+  lines: HTMLElement[];
+} {
   const text = el.textContent || '';
   el.innerHTML = '';
   el.setAttribute('aria-label', text);
@@ -33,7 +37,9 @@ export function splitText(el: HTMLElement): { chars: HTMLElement[]; words: HTMLE
   return { chars, words, lines: [] };
 }
 
-export function splitAll(selector = '[data-split]'): Map<HTMLElement, ReturnType<typeof splitText>> {
+export function splitAll(
+  selector = '[data-split]',
+): Map<HTMLElement, ReturnType<typeof splitText>> {
   const results = new Map<HTMLElement, ReturnType<typeof splitText>>();
   document.querySelectorAll<HTMLElement>(selector).forEach((el) => {
     results.set(el, splitText(el));

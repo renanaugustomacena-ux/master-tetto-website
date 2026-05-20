@@ -10,10 +10,26 @@ const schema = buildWebPageSchema(
 );
 
 const values = [
-  { icon: '🛡️', title: 'Sicurezza', desc: 'La sicurezza è il nostro valore fondamentale. Ogni intervento segue protocolli rigorosi con DPI certificati e sistemi anticaduta.' },
-  { icon: '✦', title: 'Qualità', desc: 'Lavoro impeccabile, coppo per coppo. La qualità artigianale italiana è il nostro standard, mai un compromesso.' },
-  { icon: '◎', title: 'Trasparenza', desc: 'Preventivi dettagliati senza sorprese. Documentiamo ogni fase del lavoro con foto prima e dopo.' },
-  { icon: '◈', title: 'Puntualità', desc: 'Rispettiamo i tempi concordati. Il vostro tempo ha valore e noi lo trattiamo con rispetto.' },
+  {
+    icon: '🛡️',
+    title: 'Sicurezza',
+    desc: 'La sicurezza è il nostro valore fondamentale. Ogni intervento segue protocolli rigorosi con DPI certificati e sistemi anticaduta.',
+  },
+  {
+    icon: '✦',
+    title: 'Qualità',
+    desc: 'Lavoro impeccabile, coppo per coppo. La qualità artigianale italiana è il nostro standard, mai un compromesso.',
+  },
+  {
+    icon: '◎',
+    title: 'Trasparenza',
+    desc: 'Preventivi dettagliati senza sorprese. Documentiamo ogni fase del lavoro con foto prima e dopo.',
+  },
+  {
+    icon: '◈',
+    title: 'Puntualità',
+    desc: 'Rispettiamo i tempi concordati. Il vostro tempo ha valore e noi lo trattiamo con rispetto.',
+  },
 ];
 
 const areas = [
@@ -49,23 +65,18 @@ const areas = [
     <div class="container">
       <div class="story-layout">
         <div class="story-content">
-          <SectionHeader
-            eyebrow="LA NOSTRA STORIA"
-            title="Passione per il Tetto"
-            align="left"
-          />
+          <SectionHeader eyebrow="LA NOSTRA STORIA" title="Passione per il Tetto" align="left" />
           <div class="story-text" data-animate="fade-up">
             <p>
-              MasterTetto SNC nasce dalla passione condivisa di due professionisti veronesi
-              per l'arte della copertura. Con anni di esperienza nel settore edilizio,
-              abbiamo scelto di specializzarci nella manutenzione acrobatica del tetto —
-              una tecnica che unisce competenza artigianale e innovazione.
+              MasterTetto SNC nasce dalla passione condivisa di due professionisti veronesi per
+              l'arte della copertura. Con anni di esperienza nel settore edilizio, abbiamo scelto di
+              specializzarci nella manutenzione acrobatica del tetto — una tecnica che unisce
+              competenza artigianale e innovazione.
             </p>
             <p>
               Ogni giorno saliamo sui tetti di Verona e provincia con un obiettivo chiaro:
-              restituire ai nostri clienti una copertura perfetta, sicura e duratura.
-              Non siamo una grande azienda — siamo due artigiani che mettono la qualità
-              del lavoro al primo posto.
+              restituire ai nostri clienti una copertura perfetta, sicura e duratura. Non siamo una
+              grande azienda — siamo due artigiani che mettono la qualità del lavoro al primo posto.
             </p>
             <p>
               La nostra dimensione ci permette di seguire ogni progetto personalmente,
@@ -89,7 +100,11 @@ const areas = [
   </section>
 
   <!-- TECHNIQUE -->
-  <section class="section section--bg" aria-labelledby="tecnica-heading" style={`--section-bg: url(${url('/images/la-nostra-tecnica.jpeg')})`}>
+  <section
+    class="section section--bg"
+    aria-labelledby="tecnica-heading"
+    style={`--section-bg: url(${url('/images/la-nostra-tecnica.jpeg')})`}
+  >
     <div class="container">
       <SectionHeader
         eyebrow="LA NOSTRA TECNICA"
@@ -126,10 +141,7 @@ const areas = [
   <!-- VALUES -->
   <section class="section" aria-labelledby="valori-heading">
     <div class="container">
-      <SectionHeader
-        eyebrow="I NOSTRI VALORI"
-        title="In Cosa Crediamo"
-      />
+      <SectionHeader eyebrow="I NOSTRI VALORI" title="In Cosa Crediamo" />
       <div class="grid-4 values-grid">
         {
           values.map((v) => (
@@ -156,30 +168,38 @@ const areas = [
             align="left"
           />
           <ul class="area-list" data-animate="fade-up">
-            {areas.map((a) => (
-              <li>{a}</li>
-            ))}
+            {areas.map((a) => <li>{a}</li>)}
           </ul>
         </div>
         <div class="area-visual" data-animate="scale-in">
+          <div class="map-consent" id="chi-map-consent">
+            <p>Per visualizzare la mappa, accetta i cookie di Google Maps.</p>
+            <button class="btn btn--primary" id="chi-map-accept" type="button"
+              >Accetta e mostra mappa</button
+            >
+          </div>
           <iframe
             class="area-map"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d180000!2d10.99!3d45.44!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sit!2sit"
+            id="chi-map-iframe"
+            data-src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d180000!2d10.99!3d45.44!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sit!2sit"
             width="100%"
             height="100%"
-            style="border:0; border-radius: var(--radius-lg);"
+            style="border:0; border-radius: var(--radius-lg); display: none;"
             allowfullscreen=""
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Area operativa MasterTetto — Provincia di Verona"
-          ></iframe>
+            referrerpolicy="no-referrer"
+            title="Area operativa MasterTetto — Provincia di Verona"></iframe>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section section--bg cta-section" aria-labelledby="cta-chi" style={`--section-bg: url(${url('/images/i-nostri-lavori.jpeg')})`}>
+  <section
+    class="section section--bg cta-section"
+    aria-labelledby="cta-chi"
+    style={`--section-bg: url(${url('/images/i-nostri-lavori.jpeg')})`}
+  >
     <div class="container" style="text-align: center;">
       <SectionHeader
         eyebrow="LAVORA CON NOI"
@@ -195,6 +215,35 @@ const areas = [
     </div>
   </section>
 </PageLayout>
+
+<script>
+  const mapIframe = document.getElementById('chi-map-iframe') as HTMLIFrameElement | null;
+  const mapConsent = document.getElementById('chi-map-consent');
+  const mapAcceptBtn = document.getElementById('chi-map-accept');
+  const MAP_KEY = 'maps_consent';
+
+  function loadChiMap() {
+    if (!mapIframe) return;
+    const src = mapIframe.dataset.src;
+    if (src) {
+      mapIframe.src = src;
+      mapIframe.style.display = '';
+    }
+    if (mapConsent) mapConsent.style.display = 'none';
+  }
+
+  if (
+    localStorage.getItem(MAP_KEY) === 'accepted' ||
+    localStorage.getItem('cookie_consent')?.includes('accepted')
+  ) {
+    loadChiMap();
+  }
+
+  mapAcceptBtn?.addEventListener('click', () => {
+    localStorage.setItem(MAP_KEY, 'accepted');
+    loadChiMap();
+  });
+</script>
 
 <style>
   .page-hero {
@@ -218,7 +267,9 @@ const areas = [
 
   .section--bg {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), var(--section-bg) center / cover no-repeat;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      var(--section-bg) center / cover no-repeat;
     color: #fff;
   }
 
@@ -385,6 +436,25 @@ const areas = [
     content: '📍';
     position: absolute;
     left: 0;
+  }
+
+  .map-consent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-16);
+    padding: var(--space-32);
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    min-height: 300px;
+  }
+
+  .map-consent p {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
   }
 
   /* CTA */

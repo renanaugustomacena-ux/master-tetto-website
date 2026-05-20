@@ -28,19 +28,33 @@ const schema = buildLocalBusinessSchema();
         Qualità impeccabile su ogni copertura.
       </p>
       <div class="hero__cta">
-        <a href={url('/contatti/')} class="btn btn--primary btn--lg" data-magnetic="0.3">Richiedi Preventivo</a>
+        <a href={url('/contatti/')} class="btn btn--primary btn--lg" data-magnetic="0.3"
+          >Richiedi Preventivo</a
+        >
         <a href="#servizi" class="btn btn--outline btn--lg" data-magnetic="0.2">Scopri i Servizi</a>
       </div>
       <div class="hero__scroll animate-scroll-hint" aria-hidden="true">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M19 12l-7 7-7-7" />
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M12 5v14M19 12l-7 7-7-7"></path>
         </svg>
       </div>
     </div>
   </section>
 
   <!-- SERVIZI PREVIEW -->
-  <section class="section section--bg" id="servizi" aria-labelledby="servizi-heading" style={`--section-bg: url(${url('/images/bg-tetto-panorama.jpeg')})`}>
+  <section
+    class="section section--bg"
+    id="servizi"
+    aria-labelledby="servizi-heading"
+    style={`--section-bg: url(${url('/images/bg-tetto-panorama.jpeg')})`}
+  >
     <div class="container">
       <SectionHeader
         eyebrow="COSA FACCIAMO"
@@ -50,7 +64,11 @@ const schema = buildLocalBusinessSchema();
       <div class="services-grid">
         {
           services.map((service, i) => (
-            <article class="service-card card" data-animate="fade-up" style={`--delay: ${i * 0.08}s`}>
+            <article
+              class="service-card card"
+              data-animate="fade-up"
+              style={`--delay: ${i * 0.08}s`}
+            >
               <span class="service-card__num">{service.num}</span>
               <h3 class="service-card__title">{service.title}</h3>
               <p class="service-card__desc">{service.description}</p>
@@ -65,17 +83,20 @@ const schema = buildLocalBusinessSchema();
   </section>
 
   <!-- PERCHÉ NOI -->
-  <section class="section section--bg why-us" aria-labelledby="why-heading" style={`--section-bg: url(${url('/images/bg-tetto-closeup.jpeg')})`}>
+  <section
+    class="section section--bg why-us"
+    aria-labelledby="why-heading"
+    style={`--section-bg: url(${url('/images/bg-tetto-closeup.jpeg')})`}
+  >
     <div class="container">
-      <SectionHeader
-        eyebrow="PERCHÉ MASTERTETTO"
-        title="Perché Sceglierci"
-      />
+      <SectionHeader eyebrow="PERCHÉ MASTERTETTO" title="Perché Sceglierci" />
       <div class="grid-4 why-us__grid">
         <div class="why-card" data-animate="fade-up">
           <span class="why-card__icon">&#9878;</span>
           <h3 class="why-card__title">Senza Ponteggi</h3>
-          <p class="why-card__desc">Costi ridotti, intervento rapido, nessun disturbo al vicinato.</p>
+          <p class="why-card__desc">
+            Costi ridotti, intervento rapido, nessun disturbo al vicinato.
+          </p>
         </div>
         <div class="why-card" data-animate="fade-up">
           <span class="why-card__icon">&#9888;</span>
@@ -85,19 +106,27 @@ const schema = buildLocalBusinessSchema();
         <div class="why-card" data-animate="fade-up">
           <span class="why-card__icon">&#10003;</span>
           <h3 class="why-card__title">Lavoro Impeccabile</h3>
-          <p class="why-card__desc">Restauro preciso coppo per coppo. Qualità artigianale italiana.</p>
+          <p class="why-card__desc">
+            Restauro preciso coppo per coppo. Qualità artigianale italiana.
+          </p>
         </div>
         <div class="why-card" data-animate="fade-up">
           <span class="why-card__icon">&#9993;</span>
           <h3 class="why-card__title">Preventivo Gratuito</h3>
-          <p class="why-card__desc">Sopralluogo senza impegno. Preventivo dettagliato e trasparente.</p>
+          <p class="why-card__desc">
+            Sopralluogo senza impegno. Preventivo dettagliato e trasparente.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA CONTATTI -->
-  <section class="section section--bg cta-section" aria-labelledby="cta-heading" style={`--section-bg: url(${url('/images/bg-tetto-panorama.jpeg')})`}>
+  <section
+    class="section section--bg cta-section"
+    aria-labelledby="cta-heading"
+    style={`--section-bg: url(${url('/images/contattaciu.jpeg')})`}
+  >
     <div class="container" style="text-align: center;">
       <SectionHeader
         eyebrow="CONTATTACI"
@@ -105,7 +134,12 @@ const schema = buildLocalBusinessSchema();
         description="Contattaci via WhatsApp, telefono o email. Rispondiamo entro 24 ore."
       />
       <div class="cta-section__buttons" data-animate="fade-up">
-        <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">
+        <a
+          href={site.whatsapp}
+          class="btn btn--primary btn--lg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Scrivici su WhatsApp
         </a>
         <a href={`tel:${site.phone}`} class="btn btn--outline btn--lg">
@@ -173,7 +207,9 @@ const schema = buildLocalBusinessSchema();
   /* SECTION BG */
   .section--bg {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), var(--section-bg) center / cover no-repeat;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+      var(--section-bg) center / cover no-repeat;
     color: #fff;
   }
 

@@ -24,8 +24,8 @@ const schema = buildWebPageSchema(
         Cosa Facciamo
       </h1>
       <p class="text-lead page-hero__sub" data-animate="fade-up">
-        Dalla manutenzione ordinaria al rifacimento completo, operiamo senza ponteggi
-        con tecniche acrobatiche certificate.
+        Dalla manutenzione ordinaria al rifacimento completo, operiamo senza ponteggi con tecniche
+        acrobatiche certificate.
       </p>
     </div>
   </section>
@@ -41,8 +41,14 @@ const schema = buildWebPageSchema(
         <div class="container">
           <div class="service-detail__layout">
             <div class="service-detail__content">
-              <span class="service-detail__num" data-animate="fade-up">{service.num}</span>
-              <h2 id={`service-${service.slug}`} class="service-detail__title" data-animate="fade-up">
+              <span class="service-detail__num" data-animate="fade-up">
+                {service.num}
+              </span>
+              <h2
+                id={`service-${service.slug}`}
+                class="service-detail__title"
+                data-animate="fade-up"
+              >
                 {service.title}
               </h2>
               <p class="service-detail__desc" data-animate="fade-up">
@@ -65,12 +71,24 @@ const schema = buildWebPageSchema(
               </div>
             </div>
             <div class="service-detail__visual" data-animate="scale-in">
-              <div class="service-detail__placeholder">
+              <div
+                class:list={[
+                  'service-detail__placeholder',
+                  {
+                    'service-detail__placeholder--square': service.slug === 'rifacimento-del-tetto',
+                  },
+                ]}
+              >
                 {service.image ? (
                   <img
                     src={url(service.image)}
                     alt={service.title}
-                    class="service-detail__img"
+                    class:list={[
+                      'service-detail__img',
+                      { 'service-detail__img--contain': service.slug === 'rifacimento-del-tetto' },
+                    ]}
+                    width={service.slug === 'rifacimento-del-tetto' ? 2048 : undefined}
+                    height={service.slug === 'rifacimento-del-tetto' ? 2048 : undefined}
                     loading="lazy"
                   />
                 ) : (
@@ -93,12 +111,15 @@ const schema = buildWebPageSchema(
         description="Contattaci per un sopralluogo gratuito e un preventivo senza impegno."
       />
       <div class="cta-section__buttons" data-animate="fade-up">
-        <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">
+        <a
+          href={site.whatsapp}
+          class="btn btn--primary btn--lg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Scrivici su WhatsApp
         </a>
-        <a href={url('/contatti/')} class="btn btn--outline btn--lg">
-          Richiedi Preventivo
-        </a>
+        <a href={url('/contatti/')} class="btn btn--outline btn--lg"> Richiedi Preventivo </a>
       </div>
     </div>
   </section>
@@ -211,6 +232,14 @@ const schema = buildWebPageSchema(
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .service-detail__placeholder--square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .service-detail__img--contain {
+    object-fit: contain;
   }
 
   .service-detail__placeholder-num {

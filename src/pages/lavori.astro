@@ -37,8 +37,18 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
       <h2 id="gallery-heading" class="sr-only">Galleria lavori</h2>
 
       <!-- FILTERS -->
-      <div class="gallery-filters" data-animate="fade-up" role="tablist" aria-label="Filtra per categoria">
-        <button class="filter-btn filter-btn--active" data-filter="all" role="tab" aria-selected="true">
+      <div
+        class="gallery-filters"
+        data-animate="fade-up"
+        role="tablist"
+        aria-label="Filtra per categoria"
+      >
+        <button
+          class="filter-btn filter-btn--active"
+          data-filter="all"
+          role="tab"
+          aria-selected="true"
+        >
           Tutti
         </button>
         {
@@ -53,42 +63,78 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
       <!-- GRID -->
       <div class="gallery-grid" id="gallery-grid">
         {
-          projects.map((project, i) => (
-            <article
-              class="gallery-card"
-              data-category={project.category}
-              data-animate="fade-up"
-              style={`--delay: ${(i % 4) * 0.08}s`}
-            >
-              <div class="gallery-card__media">
-                {project.images[0]?.src.includes('placeholder') ? (
-                  <div class="gallery-card__placeholder">
-                    <span>{project.title.charAt(0)}</span>
-                  </div>
-                ) : (
-                  <img
-                    src={url(project.images[0].src)}
-                    alt={project.images[0].alt}
-                    class="gallery-card__img"
-                    width="800"
-                    height="600"
-                    loading="lazy"
-                  />
-                )}
-                {project.beforeAfter && (
-                  <span class="gallery-card__badge">Prima / Dopo</span>
-                )}
-              </div>
-              <div class="gallery-card__info">
-                <h3 class="gallery-card__title">{project.title}</h3>
-                <p class="gallery-card__desc">{project.description}</p>
-                <div class="gallery-card__meta">
-                  <span class="badge">{categoryLabels[project.category]}</span>
+          projects.map((project, i) => {
+            const isSideBySide =
+              project.beforeAfter && project.images[0]?.src.includes('rifacimento-prima-dopo');
+            return (
+              <article
+                class="gallery-card"
+                data-category={project.category}
+                data-animate="fade-up"
+                style={`--delay: ${(i % 4) * 0.08}s`}
+                role="button"
+                tabindex="0"
+                data-lightbox-src={url(project.images[0].src)}
+                data-lightbox-alt={project.images[0].alt}
+                data-lightbox-sidebyside={isSideBySide ? 'true' : undefined}
+              >
+                <div class="gallery-card__media">
+                  {isSideBySide ? (
+                    <div class="gallery-card__sidebyside">
+                      <div
+                        class="gallery-card__half"
+                        style={`background-image: url(${url(project.images[0].src)})`}
+                      >
+                        <span class="gallery-card__half-label">PRIMA</span>
+                      </div>
+                      <div
+                        class="gallery-card__half gallery-card__half--after"
+                        style={`background-image: url(${url(project.images[0].src)})`}
+                      >
+                        <span class="gallery-card__half-label">DOPO</span>
+                      </div>
+                    </div>
+                  ) : project.images[0]?.src.includes('placeholder') ? (
+                    <div class="gallery-card__placeholder">
+                      <span>{project.title.charAt(0)}</span>
+                    </div>
+                  ) : (
+                    <img
+                      src={url(project.images[0].src)}
+                      alt={project.images[0].alt}
+                      class="gallery-card__img"
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                    />
+                  )}
+                  {project.beforeAfter && !isSideBySide && (
+                    <span class="gallery-card__badge">Prima / Dopo</span>
+                  )}
                 </div>
-              </div>
-            </article>
-          ))
+                <div class="gallery-card__info">
+                  <h3 class="gallery-card__title">{project.title}</h3>
+                  <p class="gallery-card__desc">{project.description}</p>
+                  <div class="gallery-card__meta">
+                    <span class="badge">{categoryLabels[project.category]}</span>
+                  </div>
+                </div>
+              </article>
+            );
+          })
         }
+      </div>
+
+      <!-- LIGHTBOX -->
+      <div
+        class="lightbox"
+        id="lightbox"
+        aria-hidden="true"
+        role="dialog"
+        aria-label="Immagine ingrandita"
+      >
+        <button class="lightbox__close" aria-label="Chiudi" type="button">&times;</button>
+        <div class="lightbox__content" id="lightbox-content"></div>
       </div>
 
       <p class="gallery-note" data-animate="fade-up">
@@ -107,7 +153,12 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
       />
       <div class="cta-buttons" data-animate="fade-up">
         <a href={url('/contatti/')} class="btn btn--primary btn--lg">Richiedi Preventivo</a>
-        <a href={site.whatsapp} class="btn btn--outline btn--lg" target="_blank" rel="noopener noreferrer">
+        <a
+          href={site.whatsapp}
+          class="btn btn--outline btn--lg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Scrivici su WhatsApp
         </a>
       </div>
@@ -135,6 +186,77 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
         card.style.display = match ? '' : 'none';
       });
     });
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxContent = document.getElementById('lightbox-content');
+  const lightboxClose = lightbox?.querySelector('.lightbox__close');
+
+  function openLightbox(card: HTMLElement) {
+    if (!lightbox || !lightboxContent) return;
+    const src = card.dataset.lightboxSrc;
+    const alt = card.dataset.lightboxAlt || '';
+    const isSideBySide = card.dataset.lightboxSidebyside === 'true';
+
+    lightboxContent.innerHTML = '';
+
+    if (isSideBySide && src) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lightbox__sidebyside';
+
+      const before = document.createElement('div');
+      before.className = 'lightbox__half';
+      before.style.backgroundImage = `url(${src})`;
+      const labelBefore = document.createElement('span');
+      labelBefore.className = 'lightbox__half-label';
+      labelBefore.textContent = 'PRIMA';
+      before.appendChild(labelBefore);
+
+      const after = document.createElement('div');
+      after.className = 'lightbox__half lightbox__half--after';
+      after.style.backgroundImage = `url(${src})`;
+      const labelAfter = document.createElement('span');
+      labelAfter.className = 'lightbox__half-label';
+      labelAfter.textContent = 'DOPO';
+      after.appendChild(labelAfter);
+
+      wrapper.appendChild(before);
+      wrapper.appendChild(after);
+      lightboxContent.appendChild(wrapper);
+    } else if (src) {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt;
+      img.className = 'lightbox__img';
+      lightboxContent.appendChild(img);
+    }
+
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => openLightbox(card));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(card);
+      }
+    });
+  });
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
   });
 </script>
 
@@ -198,9 +320,11 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: transform var(--duration-normal) var(--ease-out-expo),
-                box-shadow var(--duration-normal),
-                border-color var(--duration-normal);
+    cursor: pointer;
+    transition:
+      transform var(--duration-normal) var(--ease-out-expo),
+      box-shadow var(--duration-normal),
+      border-color var(--duration-normal);
   }
 
   .gallery-card:hover {
@@ -234,6 +358,39 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
     aspect-ratio: 4 / 3;
     object-fit: cover;
     display: block;
+  }
+
+  /* Side-by-side before/after */
+  .gallery-card__sidebyside {
+    display: flex;
+    aspect-ratio: 16 / 9;
+  }
+
+  .gallery-card__half {
+    flex: 1;
+    background-size: 100% 200%;
+    background-position: top;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .gallery-card__half--after {
+    background-position: bottom;
+  }
+
+  .gallery-card__half-label {
+    position: absolute;
+    bottom: var(--space-8);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-4) var(--space-12);
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
   }
 
   .gallery-card__badge {
@@ -271,7 +428,6 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
     flex-wrap: wrap;
   }
 
-
   .gallery-note {
     text-align: center;
     color: var(--text-muted);
@@ -290,6 +446,99 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
     justify-content: center;
     gap: var(--space-16);
     flex-wrap: wrap;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-32);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--duration-normal),
+      visibility var(--duration-normal);
+  }
+
+  .lightbox[aria-hidden='false'] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: var(--space-16);
+    right: var(--space-24);
+    font-size: 2.5rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 201;
+    line-height: 1;
+    padding: var(--space-8);
+  }
+
+  .lightbox__close:hover {
+    color: var(--accent-primary);
+  }
+
+  .lightbox__content {
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox__img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+
+  .lightbox__sidebyside {
+    display: flex;
+    gap: var(--space-8);
+    max-width: 90vw;
+    max-height: 85vh;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  .lightbox__half {
+    flex: 1;
+    background-size: 100% 200%;
+    background-position: top;
+    background-repeat: no-repeat;
+    border-radius: var(--radius-md);
+    position: relative;
+    min-height: 300px;
+  }
+
+  .lightbox__half--after {
+    background-position: bottom;
+  }
+
+  .lightbox__half-label {
+    position: absolute;
+    bottom: var(--space-12);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-4) var(--space-16);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
   }
 
   /* Responsive */

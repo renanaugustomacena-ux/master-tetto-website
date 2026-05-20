@@ -1,14 +1,18 @@
 ---
+
 ---
 
-<button
-  class="back-to-top"
-  id="back-to-top"
-  aria-label="Torna in cima alla pagina"
-  type="button"
->
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-    <path d="M12 19V5M5 12l7-7 7 7"/>
+<button class="back-to-top" id="back-to-top" aria-label="Torna in cima alla pagina" type="button">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    aria-hidden="true"
+  >
+    <path d="M12 19V5M5 12l7-7 7 7"></path>
   </svg>
 </button>
 
@@ -53,10 +57,11 @@
     opacity: 0;
     transform: translateY(16px);
     pointer-events: none;
-    transition: opacity var(--duration-normal),
-                transform var(--duration-normal) var(--ease-out-expo),
-                border-color var(--duration-normal),
-                color var(--duration-normal);
+    transition:
+      opacity var(--duration-normal),
+      transform var(--duration-normal) var(--ease-out-expo),
+      border-color var(--duration-normal),
+      color var(--duration-normal);
   }
 
   .back-to-top--visible {

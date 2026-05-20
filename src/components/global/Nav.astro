@@ -12,7 +12,13 @@ const { currentPath } = Astro.props;
 <header class="nav" id="main-nav">
   <nav class="nav__inner container" aria-label="Navigazione principale">
     <a href={url('/')} class="nav__logo" aria-label={`${site.name} — Torna alla homepage`}>
-      <img src={url('/images/logo-icon-only.png')} alt={site.name} class="nav__logo-img" />
+      <img
+        src={url('/images/logo-icon-only.png')}
+        alt={site.name}
+        class="nav__logo-img"
+        width="195"
+        height="106"
+      />
       <span class="nav__logo-text">MASTER<strong>TETTO</strong></span>
     </a>
 
@@ -42,7 +48,16 @@ const { currentPath } = Astro.props;
           rel="noopener noreferrer"
           aria-label="Instagram"
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <circle cx="12" cy="12" r="5"></circle>
             <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
@@ -89,7 +104,12 @@ const { currentPath } = Astro.props;
         {site.phoneDisplay}
       </a>
       <div class="nav__mobile-buttons">
-        <a href={site.whatsapp} class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">
+        <a
+          href={site.whatsapp}
+          class="btn btn--primary btn--lg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           WhatsApp
         </a>
         <a
@@ -99,7 +119,16 @@ const { currentPath } = Astro.props;
           rel="noopener noreferrer"
           aria-label="Instagram"
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <circle cx="12" cy="12" r="5"></circle>
             <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
@@ -139,7 +168,7 @@ const { currentPath } = Astro.props;
   }
 
   .nav__logo-img {
-    height: 110px;
+    height: 106px;
     width: auto;
     display: block;
     object-fit: contain;
@@ -167,8 +196,8 @@ const { currentPath } = Astro.props;
   }
 
   .nav__link {
-    padding: var(--space-8) var(--space-16);
-    font-size: 1rem;
+    padding: 10px 20px;
+    font-size: 1.0625rem;
     font-weight: var(--weight-semibold);
     letter-spacing: var(--tracking-wide);
     color: var(--text-secondary);
@@ -187,6 +216,8 @@ const { currentPath } = Astro.props;
   .nav__link--cta {
     color: var(--text-primary);
     margin-left: var(--space-8);
+    font-size: var(--text-base);
+    padding: 14px 36px;
   }
 
   .nav__instagram {
@@ -198,7 +229,7 @@ const { currentPath } = Astro.props;
   }
 
   .nav__instagram:hover {
-    color: #E1306C;
+    color: #e1306c;
   }
 
   /* Hamburger */
@@ -307,12 +338,14 @@ const { currentPath } = Astro.props;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     color: var(--text-secondary);
-    transition: color var(--duration-fast), border-color var(--duration-fast);
+    transition:
+      color var(--duration-fast),
+      border-color var(--duration-fast);
   }
 
   .nav__mobile-instagram:hover {
-    color: #E1306C;
-    border-color: #E1306C;
+    color: #e1306c;
+    border-color: #e1306c;
   }
 
   @media (max-width: 768px) {

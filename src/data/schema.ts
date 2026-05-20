@@ -37,9 +37,7 @@ export function buildLocalBusinessSchema() {
       'Linee vita anticaduta',
       'Pulizia pannelli solari',
     ],
-    sameAs: site.socialLinks
-      .filter((l) => l.url !== '#')
-      .map((l) => l.url),
+    sameAs: site.socialLinks.filter((l) => l.url !== '#').map((l) => l.url),
   };
 }
 

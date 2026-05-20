@@ -12,8 +12,8 @@ import { url } from '@data/site';
 >
   <div class="cookie-banner__inner">
     <p id="cookie-desc" class="cookie-banner__text">
-      Questo sito utilizza cookie tecnici necessari al funzionamento.
-      Per maggiori informazioni consulta la nostra
+      Questo sito utilizza cookie tecnici necessari al funzionamento. Per maggiori informazioni
+      consulta la nostra
       <a href={url('/cookie/')}>Cookie Policy</a>.
     </p>
     <div class="cookie-banner__actions">
@@ -29,19 +29,34 @@ import { url } from '@data/site';
 
 <script>
   const STORAGE_KEY = 'cookie_consent';
+  const TWELVE_MONTHS_MS = 365 * 24 * 60 * 60 * 1000;
   const banner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('cookie-accept');
   const rejectBtn = document.getElementById('cookie-reject');
 
   if (banner && acceptBtn && rejectBtn) {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(STORAGE_KEY);
+    let showBanner = true;
 
-    if (!stored) {
+    if (raw) {
+      try {
+        const { ts } = JSON.parse(raw);
+        if (typeof ts === 'number' && Date.now() - ts < TWELVE_MONTHS_MS) {
+          showBanner = false;
+        } else {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      } catch {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    }
+
+    if (showBanner) {
       banner.hidden = false;
     }
 
     const dismiss = (value: string) => {
-      localStorage.setItem(STORAGE_KEY, value);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ value, ts: Date.now() }));
       banner.hidden = true;
     };
 

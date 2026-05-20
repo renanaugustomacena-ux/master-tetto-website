@@ -24,17 +24,13 @@ export class ShaderBackground {
   private scrollY = 0;
   private maxScroll = 1;
   private paused = false;
-  private frameSkip = false;
   private frameCount = 0;
   private isMobile: boolean;
   private observer: IntersectionObserver | null = null;
   private canvas: HTMLCanvasElement;
 
   constructor(options: ShaderBgOptions) {
-    const {
-      canvas,
-      colors = ['#1a1410', '#8b4513', '#c4653a'],
-    } = options;
+    const { canvas, colors = ['#1a1410', '#8b4513', '#c4653a'] } = options;
 
     this.canvas = canvas;
     this.isMobile = 'ontouchstart' in window || window.innerWidth < 768;

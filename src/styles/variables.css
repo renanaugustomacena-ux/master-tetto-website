@@ -52,7 +52,7 @@
   --accent-primary: var(--color-primary-600);
   --accent-primary-dim: rgba(198, 40, 40, 0.12);
   --accent-secondary: var(--color-terracotta-500);
-  --accent-secondary-dim: rgba(204, 122, 58, 0.10);
+  --accent-secondary-dim: rgba(204, 122, 58, 0.1);
   --accent-cta: var(--color-primary-600);
   --accent-cta-hover: var(--color-primary-500);
 
@@ -61,7 +61,7 @@
      ================================================ */
   --border: #2e261e;
   --border-soft: rgba(255, 255, 255, 0.04);
-  --border-accent: rgba(198, 40, 40, 0.20);
+  --border-accent: rgba(198, 40, 40, 0.2);
 
   /* ================================================
      SEMANTIC — Form States

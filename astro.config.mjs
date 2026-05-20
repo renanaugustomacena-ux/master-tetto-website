@@ -8,9 +8,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) =>
-        !page.includes('/privacy/') &&
-        !page.includes('/cookie/') &&
-        !page.includes('/404'),
+        !page.includes('/privacy/') && !page.includes('/cookie/') && !page.includes('/404'),
     }),
   ],
   build: {

@@ -6,7 +6,7 @@ export const services: Service[] = [
     title: 'Sistema Anticaduta',
     description: 'Installazione provvisoria di protezioni anticaduta per ogni singolo intervento.',
     longDescription:
-      'Prima di ogni lavoro installiamo un sistema anticaduta provvisorio dedicato, che viene rimosso al termine dell\'intervento. Non lasciamo nulla montato sulla copertura: ogni cantiere ha la sua protezione su misura, conforme al D.Lgs. 81/2008 in materia di sicurezza sul lavoro. Imbragature certificate, DPI di ultima generazione e procedure rigorose garantiscono la massima sicurezza per ogni intervento.',
+      "Prima di ogni lavoro installiamo un sistema anticaduta provvisorio dedicato, che viene rimosso al termine dell'intervento. Non lasciamo nulla montato sulla copertura: ogni cantiere ha la sua protezione su misura, conforme al D.Lgs. 81/2008 in materia di sicurezza sul lavoro. Imbragature certificate, DPI di ultima generazione e procedure rigorose garantiscono la massima sicurezza per ogni intervento.",
     icon: 'shield-check',
     slug: 'sistema-anticaduta',
     image: '/images/servizi/sistema-anticaduta.jpeg',
@@ -38,10 +38,10 @@ export const services: Service[] = [
     title: 'Ripasso del Tetto',
     description: 'Ispezione e manutenzione ordinaria per prevenire infiltrazioni e danni.',
     longDescription:
-      'Il ripasso del tetto è l\'intervento di manutenzione preventiva più importante per la longevità della copertura. Controlliamo ogni tegola e coppo, riallineiamo gli elementi spostati, sostituiamo quelli rotti e verifichiamo lo stato delle guaine impermeabilizzanti. Un ripasso regolare previene infiltrazioni costose e prolunga la vita del tetto di decenni.',
+      "Il ripasso del tetto è l'intervento di manutenzione preventiva più importante per la longevità della copertura. Controlliamo ogni tegola e coppo, riallineiamo gli elementi spostati, sostituiamo quelli rotti e verifichiamo lo stato delle guaine impermeabilizzanti. Un ripasso regolare previene infiltrazioni costose e prolunga la vita del tetto di decenni.",
     icon: 'search',
     slug: 'ripasso-del-tetto',
-    image: '/images/servizi/ripasso-del-tetto.jpeg',
+    image: '/images/la-nostra-tecnica.jpeg',
     benefits: [
       'Prevenzione infiltrazioni',
       'Sostituzione tegole rotte o spostate',
@@ -70,7 +70,7 @@ export const services: Service[] = [
     title: 'Sostituzione Lucernari',
     description: 'Rimozione e installazione di lucernari per luce naturale e ventilazione.',
     longDescription:
-      'Sostituiamo lucernari vecchi, opacizzati o danneggiati con modelli moderni ad alta efficienza energetica. Installiamo lucernari nuovi dove richiesto, garantendo una perfetta integrazione con il manto di copertura esistente e l\'assenza totale di infiltrazioni. Lavoriamo con le principali marche del settore.',
+      "Sostituiamo lucernari vecchi, opacizzati o danneggiati con modelli moderni ad alta efficienza energetica. Installiamo lucernari nuovi dove richiesto, garantendo una perfetta integrazione con il manto di copertura esistente e l'assenza totale di infiltrazioni. Lavoriamo con le principali marche del settore.",
     icon: 'sun',
     slug: 'sostituzione-lucernari',
     image: '/images/servizi/sostituzione-lucernari.jpeg',
@@ -86,7 +86,7 @@ export const services: Service[] = [
     title: 'Pulizia Grondaia',
     description: 'Pulizia e manutenzione delle grondaie per un corretto deflusso delle acque.',
     longDescription:
-      'Grondaie intasate causano infiltrazioni, danni ai muri perimetrali e problemi strutturali. Eseguiamo la pulizia completa di grondaie e pluviali, rimuovendo foglie, detriti e depositi accumulati. Verifichiamo l\'integrità dei giunti e la corretta pendenza per garantire un deflusso ottimale delle acque piovane.',
+      "Grondaie intasate causano infiltrazioni, danni ai muri perimetrali e problemi strutturali. Eseguiamo la pulizia completa di grondaie e pluviali, rimuovendo foglie, detriti e depositi accumulati. Verifichiamo l'integrità dei giunti e la corretta pendenza per garantire un deflusso ottimale delle acque piovane.",
     icon: 'droplets',
     slug: 'pulizia-grondaia',
     image: '/images/servizi/pulizia-grondaia.jpeg',
@@ -102,7 +102,7 @@ export const services: Service[] = [
     title: 'Pulizia Pannelli Fotovoltaici',
     description: 'Pulizia professionale dei pannelli solari per massima resa energetica.',
     longDescription:
-      'Pannelli sporchi possono perdere fino al 30% di efficienza. Eseguiamo la pulizia professionale con acqua demineralizzata e attrezzature specifiche che non danneggiano le superfici. Il nostro accesso acrobatico ci permette di raggiungere qualsiasi pannello senza strutture ausiliarie, riducendo tempi e costi dell\'intervento.',
+      "Pannelli sporchi possono perdere fino al 30% di efficienza. Eseguiamo la pulizia professionale con acqua demineralizzata e attrezzature specifiche che non danneggiano le superfici. Il nostro accesso acrobatico ci permette di raggiungere qualsiasi pannello senza strutture ausiliarie, riducendo tempi e costi dell'intervento.",
     icon: 'zap',
     slug: 'pulizia-pannelli-fotovoltaici',
     image: '/images/servizi/pulizia-pannelli.jpeg',

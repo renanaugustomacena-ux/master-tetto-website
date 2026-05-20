@@ -12,7 +12,8 @@ export const site: SiteConfig = {
   email: 'mastertetto2821@gmail.com',
   phone: '+393928158352',
   phoneDisplay: '+39 392 815 8352',
-  whatsapp: 'https://wa.me/393928158352?text=Buongiorno%2C%20vorrei%20richiedere%20un%20preventivo%20per%20',
+  whatsapp:
+    'https://wa.me/393928158352?text=Buongiorno%2C%20vorrei%20richiedere%20un%20preventivo%20per%20',
   piva: '05023150237',
   cf: '05023150237',
   address: {
@@ -32,6 +33,10 @@ export const site: SiteConfig = {
   foundingYear: 2020, // DA CONFERMARE
   instagram: 'https://www.instagram.com/mastertetto?igsh=d3I2YXRicGhhb291',
   socialLinks: [
-    { platform: 'instagram', url: 'https://www.instagram.com/mastertetto?igsh=d3I2YXRicGhhb291', label: 'Instagram' },
+    {
+      platform: 'instagram',
+      url: 'https://www.instagram.com/mastertetto?igsh=d3I2YXRicGhhb291',
+      label: 'Instagram',
+    },
   ],
 };
