@@ -113,4 +113,21 @@ export const services: Service[] = [
       'Accesso rapido senza ponteggi',
     ],
   },
+  {
+    num: '08',
+    title: 'Reti Anti-Piccione Fotovoltaico',
+    description:
+      'Rete barriera e dissuasori meccanici per proteggere i pannelli fotovoltaici dai piccioni.',
+    longDescription:
+      "L'installazione di una rete barriera abbinata a un dissuasore meccanico lungo il perimetro dei pannelli fotovoltaici è la soluzione definitiva contro l'intrusione e lo stanziamento dei piccioni sul tetto. Metti al sicuro il tuo fotovoltaico: la combinazione tra rete protettiva e dissuasori tiene lontani i piccioni senza danneggiare i pannelli, evitando nidificazione, sporcizia e cali di efficienza.",
+    icon: 'shield-check',
+    slug: 'reti-anti-piccione',
+    image: '/images/servizi/rete-protettiva.jpeg',
+    benefits: [
+      'Rete barriera + dissuasore meccanico',
+      'Stop a intrusione e nidificazione dei piccioni',
+      'Nessun danno ai pannelli fotovoltaici',
+      "Mantiene la resa energetica dell'impianto",
+    ],
+  },
 ];

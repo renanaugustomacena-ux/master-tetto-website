@@ -76,7 +76,6 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
                 tabindex="0"
                 data-lightbox-src={url(project.images[0].src)}
                 data-lightbox-alt={project.images[0].alt}
-                data-lightbox-sidebyside={isSideBySide ? 'true' : undefined}
               >
                 <div class="gallery-card__media">
                   {isSideBySide ? (
@@ -196,34 +195,10 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
     if (!lightbox || !lightboxContent) return;
     const src = card.dataset.lightboxSrc;
     const alt = card.dataset.lightboxAlt || '';
-    const isSideBySide = card.dataset.lightboxSidebyside === 'true';
 
     lightboxContent.innerHTML = '';
 
-    if (isSideBySide && src) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'lightbox__sidebyside';
-
-      const before = document.createElement('div');
-      before.className = 'lightbox__half';
-      before.style.backgroundImage = `url(${src})`;
-      const labelBefore = document.createElement('span');
-      labelBefore.className = 'lightbox__half-label';
-      labelBefore.textContent = 'PRIMA';
-      before.appendChild(labelBefore);
-
-      const after = document.createElement('div');
-      after.className = 'lightbox__half lightbox__half--after';
-      after.style.backgroundImage = `url(${src})`;
-      const labelAfter = document.createElement('span');
-      labelAfter.className = 'lightbox__half-label';
-      labelAfter.textContent = 'DOPO';
-      after.appendChild(labelAfter);
-
-      wrapper.appendChild(before);
-      wrapper.appendChild(after);
-      lightboxContent.appendChild(wrapper);
-    } else if (src) {
+    if (src) {
       const img = document.createElement('img');
       img.src = src;
       img.alt = alt;
@@ -501,44 +476,6 @@ const usedCategories = [...new Set(projects.map((p) => p.category))];
     max-height: 85vh;
     object-fit: contain;
     border-radius: var(--radius-md);
-  }
-
-  .lightbox__sidebyside {
-    display: flex;
-    gap: var(--space-8);
-    max-width: 90vw;
-    max-height: 85vh;
-    aspect-ratio: 16 / 9;
-    width: 100%;
-  }
-
-  .lightbox__half {
-    flex: 1;
-    background-size: 100% 200%;
-    background-position: top;
-    background-repeat: no-repeat;
-    border-radius: var(--radius-md);
-    position: relative;
-    min-height: 300px;
-  }
-
-  .lightbox__half--after {
-    background-position: bottom;
-  }
-
-  .lightbox__half-label {
-    position: absolute;
-    bottom: var(--space-12);
-    left: 50%;
-    transform: translateX(-50%);
-    padding: var(--space-4) var(--space-16);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: var(--text-sm);
-    font-weight: var(--weight-semibold);
-    letter-spacing: var(--tracking-wide);
-    border-radius: var(--radius-sm);
-    text-transform: uppercase;
   }
 
   /* Responsive */
