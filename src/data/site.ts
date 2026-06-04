@@ -9,7 +9,7 @@ export function url(path: string): string {
 export const site: SiteConfig = {
   name: 'MasterTetto',
   legalName: 'MasterTetto SNC',
-  email: 'mastertetto2821@gmail.com',
+  email: 'mastertettosnc@gmail.com',
   phone: '+393928158352',
   phoneDisplay: '+39 392 815 8352',
   whatsapp:
@@ -39,4 +39,5 @@ export const site: SiteConfig = {
       label: 'Instagram',
     },
   ],
+  formspreeId: 'mbdejved',
 };
