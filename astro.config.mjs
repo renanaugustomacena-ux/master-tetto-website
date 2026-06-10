@@ -2,8 +2,8 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://renanaugustomacena-ux.github.io',
-  base: '/master-tetto-website',
+  site: 'https://mastertetto.it',
+  base: '/',
   output: 'static',
   integrations: [
     sitemap({

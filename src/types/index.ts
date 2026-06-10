@@ -14,7 +14,9 @@ export interface SiteConfig {
   description: string;
   foundingYear: number;
   socialLinks: SocialLink[];
+  formspreeId?: string;
 }
+
 
 export interface PostalAddress {
   street: string;
