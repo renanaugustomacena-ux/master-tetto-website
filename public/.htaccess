@@ -7,7 +7,11 @@
   RewriteBase /
 
   # 1. Force HTTPS
-  RewriteCond %{HTTPS} off
+  # Aruba serves behind a TLS-terminating proxy, so %{HTTPS} reads "off" on the
+  # backend even for HTTPS clients -> testing it causes an infinite redirect
+  # loop. Test the forwarded protocol instead (exact "=http" never matches an
+  # HTTPS request, so this cannot loop).
+  RewriteCond %{HTTP:X-Forwarded-Proto} =http
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # 2. Handle Trailing Slashes
