@@ -70,6 +70,26 @@ cd "$ROOT"
 echo "==> uploaded=$n failed=$fail"
 [[ $fail -eq 0 ]] || { echo "ERROR: $fail file(s) failed to upload" >&2; exit 1; }
 
+# --- refresh Aruba proxy cache ----------------------------------------------
+# Aruba's webx proxy caches HTML per URL *and* per Accept-Encoding variant
+# (vary: Accept-Encoding). A no-cache request forces it to refetch from the
+# webspace, so hit every page in every common encoding or visitors keep
+# getting the previous deploy until the TTL expires.
+echo "==> Refreshing Aruba proxy cache"
+pages=("/")
+while IFS= read -r -d '' f; do
+  rel="${f#"$DIST"}"; rel="${rel%index.html}"
+  [[ "$rel" == "/" ]] || pages+=("$rel")
+done < <(find "$DIST" -name index.html -print0)
+for p in "${pages[@]}"; do
+  for enc in "identity" "gzip" "gzip, deflate, br" "gzip, deflate, br, zstd"; do
+    curl -sS -o /dev/null --max-time 25 \
+      -H "Accept-Encoding: $enc" -H "Cache-Control: no-cache" -H "Pragma: no-cache" \
+      "${SITE_URL}${p}" || echo "  WARN: cache refresh failed for $p ($enc)" >&2
+  done
+  echo "  refreshed $p"
+done
+
 # --- verify ----------------------------------------------------------------
 echo "==> Verifying ${SITE_URL}/"
 tmp="$(mktemp)"; trap 'rm -f "$CFG" "$tmp"' EXIT
