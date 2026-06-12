@@ -1,8 +1,11 @@
-name: Deploy to Aruba Hosting (FTPS)
+name: Deploy to Aruba Hosting (FTP)
 
+# DISABLED for automatic runs: Aruba drops connections from GitHub's cloud
+# (Azure) runner IPs, so the FTP control socket always times out
+# ("Error: Timeout (control socket)"). Real deploys run locally: `npm run deploy`
+# (see scripts/deploy-ftp.sh). Kept as manual-dispatch only for reference / use
+# from a self-hosted runner on a network Aruba accepts.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -33,6 +36,7 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: ./dist/
-          server-dir: ./
+          # Aruba's FTP login dir is NOT the web root; docroot is this subfolder:
+          server-dir: ./www.mastertetto.it/
           dangerous-clean-slate: false
           # differential sync is default

@@ -15,7 +15,8 @@
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "images": "node scripts/process-images.mjs"
+    "images": "node scripts/process-images.mjs",
+    "deploy": "bash scripts/deploy-ftp.sh"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.3",
