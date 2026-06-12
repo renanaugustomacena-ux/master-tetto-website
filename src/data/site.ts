@@ -29,7 +29,7 @@ export const site: SiteConfig = {
   },
   tagline: 'Manutenzione Acrobatica del Tetto',
   description:
-    'Specialisti nella manutenzione e rifacimento del tetto senza ponteggi a Verona. Interventi acrobatici in quota in tutta sicurezza. Preventivo gratuito.',
+    'Specialisti nella riparazione, manutenzione e rifacimento del tetto senza ponteggi a Verona. Interventi acrobatici in quota in tutta sicurezza. Preventivo gratuito.',
   foundingYear: 2020, // DA CONFERMARE
   instagram: 'https://www.instagram.com/mastertetto?igsh=d3I2YXRicGhhb291',
   socialLinks: [

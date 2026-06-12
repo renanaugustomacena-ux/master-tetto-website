@@ -32,6 +32,7 @@ export function buildLocalBusinessSchema() {
       'Bassa Veronese',
     ],
     serviceType: [
+      'Riparazione tetti',
       'Manutenzione tetti',
       'Rifacimento coperture',
       'Linee vita anticaduta',
