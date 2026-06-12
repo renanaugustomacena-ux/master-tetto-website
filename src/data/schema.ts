@@ -17,7 +17,7 @@ export function buildLocalBusinessSchema() {
     },
     telephone: site.phone,
     email: site.email,
-    url: 'https://mastertetto.it',
+    url: 'https://www.mastertetto.it',
     geo: {
       '@type': 'GeoCoordinates',
       latitude: site.geo.latitude,
@@ -51,7 +51,7 @@ export function buildWebPageSchema(title: string, description: string, url?: str
     isPartOf: {
       '@type': 'WebSite',
       name: site.name,
-      url: 'https://mastertetto.it',
+      url: 'https://www.mastertetto.it',
     },
   };
 }
